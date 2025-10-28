@@ -1,0 +1,105 @@
+# depslib dependency file v1.0
+1761503478 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
+	<iostream>
+	"Cancion.h"
+	"Persona.h"
+	"Artista.h"
+	"Fecha.h"
+	"Suscriptor.h"
+
+1761503478 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancion.cpp
+	<cstring>
+	"Cancion.h"
+
+1761503478 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancion.h
+	<string>
+	"Fecha.h"
+
+1761503478 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\persona.cpp
+	<cstring>
+	"Persona.h"
+
+1761503478 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\persona.h
+	<string>
+
+1761503478 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artista.cpp
+	<cstring>
+	"Artista.h"
+
+1761503478 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artista.h
+	<string>
+	"Persona.h"
+
+1761514337 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\artista.cpp
+	<cstring>
+	"Artista.h"
+
+1761407584 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\artista.h
+	<string>
+	"Persona.h"
+
+1761510595 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\persona.h
+	<string>
+
+1761513222 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\cancion.cpp
+	<cstring>
+	"Cancion.h"
+
+1761513113 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\cancion.h
+	<string>
+	"Fecha.h"
+
+1761517351 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\main.cpp
+	<iostream>
+	"Cancion.h"
+	"Persona.h"
+	"Artista.h"
+	"Fecha.h"
+	"Suscriptor.h"
+
+1761510609 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\persona.cpp
+	<cstring>
+	"Persona.h"
+
+1761411023 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\fecha.cpp
+	<iostream>
+	<cstring>
+	"Fecha.h"
+
+1761408238 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\fecha.h
+	<string>
+
+1761513655 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\suscirptor.cpp
+	"Suscirptor.h"
+
+1761514240 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\suscirptor.h
+	<string>
+	"Persona.h"
+	"Fecha.h"
+
+1761516532 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\suscriptor.cpp
+	<cstring>
+	"Suscriptor.h"
+
+1761516524 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica\suscriptor.h
+	<string>
+	"Persona.h"
+	"Fecha.h"
+
+1761503478 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\fecha.h
+	<string>
+
+1761503478 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\fecha.cpp
+	<iostream>
+	<cstring>
+	"Fecha.h"
+
+1761502124 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptor.h
+	<string>
+	"Persona.h"
+	"Fecha.h"
+
+1761502132 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptor.cpp
+	<cstring>
+	"Suscriptor.h"
+
