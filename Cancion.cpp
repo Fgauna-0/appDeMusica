@@ -5,8 +5,8 @@ using namespace std;
 
 
 Cancion::Cancion()
-:_idCancion(0), _idArtista(0), _idGenero(0),_reproduccionesCancion(0), _nombreCancion(" "),  _estado(0), _fechaPublicacion(){
-
+:_idCancion(0), _idArtista(0), _idGenero(0),_reproduccionesCancion(0),  _estado(0), _fechaPublicacion(){
+    strcpy(_nombreCancion, "");
 }
 
 Cancion::Cancion(int idCancion, string nombreCancion, int idArtista, int idGenero, bool estado, int reproducciones, Fecha fecha){
@@ -19,34 +19,25 @@ Cancion::Cancion(int idCancion, string nombreCancion, int idArtista, int idGener
     setFecha(fecha);
 }
 
-int Cancion::getIdCancion(){
-    return _idCancion;
-}
 
-int Cancion::getIdArtista(){
-    return _idArtista;
-}
+///Getters
+int Cancion::getIdCancion()const { return _idCancion; }
 
-int Cancion::getIdGenero(){
-    return _idGenero;
-}
+int Cancion::getIdArtista()const { return _idArtista; }
 
-int Cancion::getReproduccionesCancion(){
-    return _reproduccionesCancion;
-}
+int Cancion::getIdGenero()const { return _idGenero; }
 
-string Cancion::getNombreCancion(){
-    return _nombreCancion;
-}
+int Cancion::getReproduccionesCancion()const { return _reproduccionesCancion; }
 
-bool Cancion::getEstado(){
-    return _estado;
-}
+string Cancion::getNombreCancion()const { return _nombreCancion; }
 
-Fecha Cancion::getFecha(){
-    return _fechaPublicacion;
-}
+bool Cancion::getEstado()const { return _estado; }
 
+Fecha Cancion::getFecha()const { return _fechaPublicacion; }
+
+
+
+///Setters
 void Cancion::setIdCancion(int id){
     _idCancion = id;
 }
@@ -64,8 +55,8 @@ void Cancion::setReproduccionesCancion(int reproducciones){
 }
 
 void Cancion::setNombreCancion(string nombre){
-    strncpy(_nombreCancion, nombre.c_str(),50);
-    _nombreCancion[50] = '\0';
+    strncpy(_nombreCancion, nombre.c_str(),sizeof(_nombreCancion) - 1);
+    _nombreCancion[sizeof(_nombreCancion) - 1] = '\0';
 }
 
 void Cancion::setEstado(bool estado){
@@ -77,6 +68,8 @@ void Cancion::setFecha(Fecha fecha){
 }
 
 
+
+/// MOSTRAMOS O EXPORTAMOS TEXTO
 string Cancion::toCSV(){
 
     return to_string(_idCancion) +

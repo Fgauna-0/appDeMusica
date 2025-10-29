@@ -10,9 +10,9 @@ class Fecha
         Fecha(int d, int m, int a);
 
         ///Getters
-        int getDia();
-        int getMes();
-        int getAnio();
+        int getDia() const;
+        int getMes() const;
+        int getAnio() const;
 
         ///Setters
         void setDia(int d);

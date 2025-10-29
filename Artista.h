@@ -6,10 +6,10 @@ class Artista:public Persona
 {
     public:
         Artista();
-        Artista(int id, std::string dni, std::string nombre, bool estado, int reproducciones, std::string nacionalidad);
+        Artista(int id, std::string dni, std::string nombre, bool estado, int reproducciones, std::string nacionalidad, std::string contrasenia);
 
         ///Getters
-        std::string getNacionalidad();
+        std::string getNacionalidad() const;
 
         ///Setters
         void setNacionalidad(std::string nacionalidad);

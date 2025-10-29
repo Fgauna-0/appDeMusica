@@ -9,14 +9,14 @@ class Suscriptor:public Persona
     public:
         Suscriptor();
         Suscriptor(int id, std::string dni, std::string nombre, bool estado, int reproducciones, int tipoSuscripcion, std::string apellido,
-                   std::string telefono, std::string email, Fecha fechaNacimiento);
+                   std::string telefono, std::string email, Fecha fechaNacimiento, std::string contrasenia);
 
         ///Getters
-        int getTipoSuscripcion();
-        std::string getApellido();
-        std::string getTelefono();
-        std::string getEmail();
-        Fecha getFechaNacimiento();
+        int getTipoSuscripcion() const;
+        std::string getApellido() const;
+        std::string getTelefono() const;
+        std::string getEmail() const;
+        Fecha getFechaNacimiento() const;
 
         ///Setters
         void setTipoSuscripcion(int tipoSuscripcion);
@@ -27,6 +27,7 @@ class Suscriptor:public Persona
 
         ///Comportamientos
         std::string toCSV();
+
 
     private:
         int _tipoSuscripcion;

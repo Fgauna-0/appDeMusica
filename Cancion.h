@@ -11,13 +11,13 @@ class Cancion
         Cancion(int idCancion, string nombreCancion, int idArtista, int idGenero, bool estado, int reproducciones, Fecha fecha);
 
         ///Getters
-        int getIdCancion();
-        int getIdArtista();
-        int getIdGenero();
-        int getReproduccionesCancion();
-        string getNombreCancion();
-        bool getEstado();
-        Fecha getFecha();
+        int getIdCancion() const;
+        int getIdArtista() const;
+        int getIdGenero() const;
+        int getReproduccionesCancion() const;
+        string getNombreCancion() const;
+        bool getEstado() const;
+        Fecha getFecha() const;
 
         ///Setters
         void setIdCancion(int id);

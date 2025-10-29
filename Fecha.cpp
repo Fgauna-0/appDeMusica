@@ -23,19 +23,17 @@ Fecha::Fecha(int d, int m, int a)
 
 }
 
-int Fecha::getDia(){
-    return _dia;
-}
-int Fecha::getMes(){
-    return _mes;
-}
+///Getters
+int Fecha::getDia() const { return _dia; }
 
-int Fecha::getAnio(){
-    return _anio;
-}
+int Fecha::getMes()const { return _mes; }
 
+int Fecha::getAnio()const { return _anio; }
+
+
+
+///Setters
 void Fecha::setDia(int d){
-
     _dia = d;
 }
 
@@ -47,6 +45,8 @@ void Fecha::setAnio(int a){
     _anio = a;
 }
 
+
+///
 bool Fecha::esBisiesto(int a){
     return (a % 4 == 0 && a % 100 != 0) || (a % 400 == 0);
 }
@@ -69,6 +69,9 @@ bool Fecha::operator<(const Fecha& otra){
     return _dia < otra._dia;
 }
 
+
+
+/// MOSTRAMOS O EXPORTAMOS TEXTO
 string Fecha::toCSV(){
     return to_string(_dia) +
     "/" + to_string(_mes) +
