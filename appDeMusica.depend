@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1761698601 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
+1761705347 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
 	<iostream>
 	"Cancion.h"
 	"Persona.h"
 	"Artista.h"
 	"Fecha.h"
 	"Suscriptor.h"
+	"SuscriptorArchivo.h"
 
 1761699815 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancion.cpp
 	<cstring>
@@ -22,7 +23,7 @@
 1761697611 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\persona.h
 	<string>
 
-1761698582 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artista.cpp
+1761699841 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artista.cpp
 	<cstring>
 	"Artista.h"
 
@@ -103,5 +104,18 @@
 	<cstring>
 	"Suscriptor.h"
 
-1761696153 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionarchivo.cpp
+1761700616 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionarchivo.cpp
+	"CancionArchivo.h"
+
+1761705268 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptorarchivo.cpp
+	"SuscriptorArchivo.h"
+	<iostream>
+
+1761705268 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptorarchivo.h
+	<string>
+	"Suscriptor.h"
+
+1761614326 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionarchivo.h
+	<string>
+	"Cancion.h"
 

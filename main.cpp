@@ -4,6 +4,7 @@
 #include "Artista.h"
 #include "Fecha.h"
 #include "Suscriptor.h"
+#include "SuscriptorArchivo.h"
 
 using namespace std;
 

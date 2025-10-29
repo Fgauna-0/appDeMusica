@@ -1,7 +1,7 @@
-/*#include "CancionArchivo.h"
+#include "CancionArchivo.h"
 
-CancionArchivo::CancionArchivo()
+CancionArchivo::CancionArchivo(std::string nombreArchivo)
 {
 
 }
-*/
+
