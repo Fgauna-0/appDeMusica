@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="../appDeMusica" />
+					<Add directory="appDeMusica" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="../appDeMusica" />
+					<Add directory="appDeMusica" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -42,10 +44,20 @@
 		<Unit filename="CancionArchivo.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="Genero.cpp" />
+		<Unit filename="Genero.h" />
 		<Unit filename="Persona.cpp" />
 		<Unit filename="Persona.h" />
+		<Unit filename="Playlist.cpp" />
+		<Unit filename="Playlist.h" />
+		<Unit filename="PlaylistArchivo.cpp" />
+		<Unit filename="PlaylistArchivo.h" />
 		<Unit filename="Suscriptor.cpp" />
 		<Unit filename="Suscriptor.h" />
+		<Unit filename="SuscriptorArchivo.cpp" />
+		<Unit filename="SuscriptorArchivo.h" />
+		<Unit filename="SuscriptorManager.cpp" />
+		<Unit filename="SuscriptorManager.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
