@@ -2,16 +2,23 @@
 #include <cstring>
 
 Playlist::Playlist()
-{
+:_idPlaylist(0), _idSuscriptor(0), _reproducciones(0), _estado(false){
+    strcpy(_nombrePlaylist, "");
+}
 
+Playlist::Playlist(int idPlaylist, int idSuscriptor, int reproducciones, std::string nombre, bool estado)
+{
+    setIdPlaylist(idPlaylist);
+    setIdSuscriptor(idSuscriptor);
+    setReproducciones(reproducciones);
+    setNombrePlaylist(nombre);
+    setEstado(estado);
 }
 
 ///Getters
 int Playlist::getIdPlaylist(){ return _idPlaylist;}
 
 int Playlist::getIdSuscriptor(){ return _idSuscriptor;}
-
-int Playlist::getIdCancion(){ return _idCancion;}
 
 int Playlist::getReproducciones(){ return _reproducciones;}
 
@@ -26,10 +33,6 @@ void Playlist::setIdPlaylist(int id){
 
 void Playlist::setIdSuscriptor(int idSuscriptor){
     _idSuscriptor = idSuscriptor;
-}
-
-void Playlist::setIdCancion(int idCancion){
-    _idCancion = idCancion;
 }
 
 void Playlist::setReproducciones(int reproducciones){

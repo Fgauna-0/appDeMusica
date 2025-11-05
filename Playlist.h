@@ -7,11 +7,11 @@ class Playlist
 {
     public:
         Playlist();
+        Playlist(int idPlaylist, int idSuscriptor, int reproducciones, std::string nombre, bool estado);
 
         ///Getters
         int getIdPlaylist();
         int getIdSuscriptor();
-        int getIdCancion();
         int getReproducciones();
         std::string getNombrePlaylist();
         bool getEstado();
@@ -19,7 +19,6 @@ class Playlist
         ///Setters
         void setIdPlaylist(int id);
         void setIdSuscriptor(int idSuscriptor);
-        void setIdCancion(int idCancion);
         void setReproducciones(int reproducciones);
         void setNombrePlaylist(std::string nombre);
         void setEstado(bool estado);
@@ -29,9 +28,8 @@ class Playlist
     private:
         int _idPlaylist;
         int _idSuscriptor;
-        int _idCancion;
         int _reproducciones;
-        char _nombrePlaylist[21];
+        char _nombrePlaylist[51];
         bool _estado;
 };
 

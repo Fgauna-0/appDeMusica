@@ -69,11 +69,11 @@
 1762213108 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.h
 	"SuscriptorArchivo.h"
 
-1762213282 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlist.cpp
+1762304419 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlist.cpp
 	"Playlist.h"
 	<cstring>
 
-1762213209 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlist.h
+1762304419 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlist.h
 	<string>
 
 1762214907 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\genero.cpp
@@ -81,9 +81,15 @@
 
 1762213484 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\genero.h
 
-1762214922 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistarchivo.cpp
+1762307273 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistarchivo.cpp
 	"PlaylistArchivo.h"
 
-1762214902 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistarchivo.h
+1762307225 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistarchivo.h
 	<string>
+	"Playlist.h"
+
+1762306678 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancion.cpp
+	"PlaylistCancion.h"
+
+1762307167 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancion.h
 

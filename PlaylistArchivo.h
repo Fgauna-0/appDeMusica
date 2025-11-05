@@ -1,12 +1,16 @@
 #pragma once
 #include <string>
+#include "Playlist.h"
 
 class PlaylistArchivo
 {
     public:
         PlaylistArchivo(std::string nombreArchivo = "playlist.dat");
+        bool guardar(Playlist& registro);
+        Playlist leer(int pos, Playlist& registro);
+        int getCantidadRegistros();
+        int buscarPorId(int id);
 
-    protected:
 
     private:
         std::string _nombreArchivo;
