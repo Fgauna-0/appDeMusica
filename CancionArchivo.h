@@ -6,7 +6,9 @@ class CancionArchivo
 {
     public:
         CancionArchivo(std::string nombreArchivo = "canciones.dat");
-        bool guardar(Cancion registro);
+        bool guardar(Cancion& cancion);
+        bool leer(int pos, Cancion &registro);
+        int getCantidadRegistros();
 
 
 

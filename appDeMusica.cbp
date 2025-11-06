@@ -52,6 +52,10 @@
 		<Unit filename="Playlist.h" />
 		<Unit filename="PlaylistArchivo.cpp" />
 		<Unit filename="PlaylistArchivo.h" />
+		<Unit filename="PlaylistCancion.cpp" />
+		<Unit filename="PlaylistCancion.h" />
+		<Unit filename="PlaylistCancionArchivo.cpp" />
+		<Unit filename="PlaylistCancionArchivo.h" />
 		<Unit filename="Suscriptor.cpp" />
 		<Unit filename="Suscriptor.h" />
 		<Unit filename="SuscriptorArchivo.cpp" />
