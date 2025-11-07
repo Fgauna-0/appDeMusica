@@ -8,7 +8,7 @@ class SuscriptorArchivo
     public:
         SuscriptorArchivo(std::string nombreArchivo = "suscriptor.dat");
         bool guardar(Suscriptor suscriptor);
-        Suscriptor leer(int pos);
+        bool leer(int pos, Suscriptor& registro);
         int buscarId(int id);
         int getCantidadRegistros();
 

@@ -9,6 +9,7 @@ class CancionArchivo
         bool guardar(Cancion& cancion);
         bool leer(int pos, Cancion &registro);
         int getCantidadRegistros();
+        int buscarId(int id);
 
 
 

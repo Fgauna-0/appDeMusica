@@ -21,21 +21,13 @@ bool SuscriptorArchivo::guardar(Suscriptor suscriptor){
     return resultado;
 }
 
-Suscriptor SuscriptorArchivo::leer(int pos){
-    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
-
-    if(pFile == NULL){
-        return Suscriptor();
-    }
-
-    Suscriptor suscriptor;
-
-    fseek(pFile, sizeof(Suscriptor) * pos, SEEK_SET);
-    fread(&suscriptor, sizeof(Suscriptor), 1, pFile);
-
-    fclose(pFile);
-
-    return suscriptor;
+bool SuscriptorArchivo::leer(int pos, Suscriptor& registro){
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) return false;
+    fseek(p, pos * sizeof(Suscriptor), SEEK_SET);
+    bool ok = fread(&registro, sizeof(Suscriptor), 1, p);
+    fclose(p);
+    return ok;
 }
 
 int SuscriptorArchivo::buscarId(int id){

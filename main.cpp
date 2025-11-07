@@ -16,7 +16,9 @@ int main()
 
     ///a.crearPlaylist(1);
 
-    ///a.mostrarPlaylistDelSuscriptor(1);
+    //a.mostrarPlaylistDelSuscriptor(1);
+
+    a.mostrarCancionesDePlaylist(1);
 
     return 0;
 }

@@ -23,3 +23,32 @@ int CancionArchivo::getCantidadRegistros() {
     fclose(archivo);
     return total;
 }
+
+bool CancionArchivo::leer(int pos, Cancion &registro){
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) return false;
+    fseek(p, pos * sizeof(Cancion), SEEK_SET);
+    bool ok = fread(&registro, sizeof(Cancion), 1, p);
+    fclose(p);
+    return ok;
+}
+
+int CancionArchivo::buscarId(int id){
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+
+    if(pFile == NULL){
+        return -1;
+    }
+    Cancion cancion;
+
+    int i = 0;
+    while(fread(&cancion, sizeof(Cancion), 1, pFile)){
+        if(cancion.getIdCancion() == id){
+            fclose(pFile);
+            return i;
+        }
+        i++;
+    }
+    fclose(pFile);
+    return -1;
+}

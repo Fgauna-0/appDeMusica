@@ -7,7 +7,7 @@ class PlaylistCancionArchivo
     public:
         PlaylistCancionArchivo(std::string nombreArchivo = "playlist_canciones.dat");
         bool guardar(PlaylistCancion& registro);
-        PlaylistCancion leer(int pos, PlaylistCancion& registro);
+        bool leer(int pos, PlaylistCancion& registro);
         int getCantidadRegistros();
 
 

@@ -19,21 +19,21 @@ bool PlaylistCancionArchivo::guardar(PlaylistCancion& registro){
     return resultado;
 }
 
-PlaylistCancion PlaylistCancionArchivo::leer(int pos, PlaylistCancion& registro){
+bool PlaylistCancionArchivo::leer(int pos, PlaylistCancion& registro){
     FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
 
     if(pFile == NULL){
-        return PlaylistCancion();
+        return false;
     }
 
     PlaylistCancion playlistCancion;
 
     fseek(pFile, sizeof(PlaylistCancion) * pos, SEEK_SET);
-    fread(&playlistCancion, sizeof(PlaylistCancion), 1, pFile);
+    bool ok = fread(&playlistCancion, sizeof(PlaylistCancion), 1, pFile);
 
     fclose(pFile);
 
-    return playlistCancion;
+    return ok;
 }
 
 int PlaylistCancionArchivo::getCantidadRegistros(){

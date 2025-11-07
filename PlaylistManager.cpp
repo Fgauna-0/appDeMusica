@@ -31,8 +31,6 @@ void PlaylistManager::crearPlaylist(int idSuscriptor){
     }else{
         cout << "No se pudo crear la playlist..." << endl;
     }
-
-
 }
 
 void PlaylistManager::mostrarPlaylistDelSuscriptor(int idSuscriptor){
@@ -48,11 +46,57 @@ void PlaylistManager::mostrarPlaylistDelSuscriptor(int idSuscriptor){
 
     for(int i = 0; i < total; i++){
         if(archivo.leer(i,p) && p.getEstado() && p.getIdSuscriptor() == idSuscriptor){
-            cout << "ID: " << p.getIdPlaylist() << " | Nombre: " << p.getNombrePlaylist() << endl;
+            int cantidad = getCantidadCancionesPlaylist(p.getIdPlaylist());
+            cout << "ID: " << p.getIdPlaylist() << "| Nombre: " << p.getNombrePlaylist() << " | Canciones: " << cantidad << endl;
             hay = true;
         }
     }
 
     if(!hay) cout << "No tenes playlist creadas.\n";
+}
 
+int PlaylistManager::getCantidadCancionesPlaylist(int idPlaylist){
+
+    PlaylistCancionArchivo archivo;
+    PlaylistCancion canciones;
+    int total = archivo.getCantidadRegistros();
+    int contador = 0;
+
+    for(int i = 0; i < total; i++){
+        if(archivo.leer(i, canciones)){
+            if(canciones.getIdPlaylist() == idPlaylist && canciones.getEstado()){
+                contador ++;
+            }
+        }
+    }
+    return contador;
+}
+
+void PlaylistManager::mostrarCancionesDePlaylist(int idPlaylist){
+
+    PlaylistCancionArchivo playArchivo;
+    CancionArchivo cancionArchivo;
+
+    PlaylistCancion p;
+    Cancion c;
+    int total = playArchivo.getCantidadRegistros();
+    bool hay = false;
+
+    cout << "=======================================" << endl;
+    cout << "#       CANCIONES DE LA PLAYLIST       #" << endl;
+    cout << "=======================================" << endl;
+
+    for(int i=0; i < total; i++){
+        if(playArchivo.leer(i,p)){
+            if(p.getEstado() && p.getIdPlaylist() == idPlaylist){
+                int pos = cancionArchivo.buscarId(p.getIdCancion());
+                if (pos >= 0 && cancionArchivo.leer(pos, c)){
+                        cout << "- " << c.getNombreCancion() << endl;
+                        hay = true;
+                    }
+            }
+        }
+    }
+
+    if(!hay) cout << "No hay canciones en esta playlist.\n";
 }
