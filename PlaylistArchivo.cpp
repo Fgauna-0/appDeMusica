@@ -13,13 +13,13 @@ bool PlaylistArchivo::guardar(Playlist& registro){
     return ok;
 }
 
-Playlist PlaylistArchivo::leer(int pos, Playlist& registro){
+bool PlaylistArchivo::leer(int pos, Playlist& registro){
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
-    if (p == nullptr) return Playlist();
+    if (p == nullptr) return false;
     fseek(p, pos * sizeof(Playlist), SEEK_SET);
     bool ok = fread(&registro, sizeof(Playlist), 1, p);
     fclose(p);
-    return registro;
+    return ok;
 }
 
 int PlaylistArchivo::getCantidadRegistros(){
