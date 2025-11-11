@@ -6,6 +6,8 @@
 #include "Suscriptor.h"
 #include "SuscriptorArchivo.h"
 #include "PlaylistManager.h"
+#include "Genero.h"
+#include "GeneroArchivo.h"
 
 using namespace std;
 
@@ -18,7 +20,7 @@ int main()
 
     //a.mostrarPlaylistDelSuscriptor(1);
 
-    a.mostrarCancionesDePlaylist(1);
+    ///a.mostrarCancionesDePlaylist(1);
 
     return 0;
 }
