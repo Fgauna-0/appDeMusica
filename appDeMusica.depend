@@ -40,7 +40,7 @@
 1762824526 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\genero.h
 	<string>
 
-1762824828 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
+1763084824 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
 	<iostream>
 	"Cancion.h"
 	"Persona.h"
@@ -51,6 +51,7 @@
 	"PlaylistManager.h"
 	"Genero.h"
 	"GeneroArchivo.h"
+	"GeneroManager.h"
 
 1761698211 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptor.h
 	<string>
@@ -136,9 +137,17 @@
 	"CancionArchivo.h"
 	"Cancion.h"
 
-1762823973 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generoarchivo.cpp
+1763083289 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generoarchivo.cpp
 	"GeneroArchivo.h"
 
-1762822975 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generoarchivo.h
+1763083289 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generoarchivo.h
 	"Genero.h"
+
+1763084956 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generomanager.cpp
+	<iostream>
+	"GeneroManager.h"
+
+1763084134 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generomanager.h
+	"Genero.h"
+	"GeneroArchivo.h"
 

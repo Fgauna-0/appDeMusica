@@ -8,13 +8,20 @@
 #include "PlaylistManager.h"
 #include "Genero.h"
 #include "GeneroArchivo.h"
+#include "GeneroManager.h"
 
 using namespace std;
 
 int main()
 {
 
-    PlaylistManager a;
+    ///PlaylistManager a;
+
+    GeneroManager g;
+
+    g.listarGeneros();
+
+
 
     ///a.crearPlaylist(1);
 
