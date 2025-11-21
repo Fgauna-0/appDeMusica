@@ -151,3 +151,160 @@
 	"Genero.h"
 	"GeneroArchivo.h"
 
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\artista.cpp
+	<cstring>
+	"Artista.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\artista.h
+	<string>
+	"Persona.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\persona.h
+	<string>
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\cancion.cpp
+	<cstring>
+	"Cancion.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\cancion.h
+	<string>
+	"Fecha.h"
+
+1763749777 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\fecha.h
+	<string>
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\cancionarchivo.cpp
+	"CancionArchivo.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\cancionarchivo.h
+	<string>
+	"Cancion.h"
+
+1763755199 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\cancionmanager.cpp
+	<iostream>
+	"CancionManager.h"
+
+1763754825 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\cancionmanager.h
+	"CancionArchivo.h"
+	"Cancion.h"
+	"Artista.h"
+	"ArtistaArchivo.h"
+
+1763755287 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\fecha.cpp
+	<iostream>
+	<cstring>
+	"Fecha.h"
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\genero.cpp
+	<cstring>
+	"Genero.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\genero.h
+	<string>
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\generoarchivo.cpp
+	"GeneroArchivo.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\generoarchivo.h
+	"Genero.h"
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\generomanager.cpp
+	<iostream>
+	"GeneroManager.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\generomanager.h
+	"Genero.h"
+	"GeneroArchivo.h"
+
+1763754912 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\main.cpp
+	<iostream>
+	"Cancion.h"
+	"Persona.h"
+	"Artista.h"
+	"Fecha.h"
+	"Suscriptor.h"
+	"SuscriptorArchivo.h"
+	"PlaylistManager.h"
+	"Genero.h"
+	"GeneroArchivo.h"
+	"GeneroManager.h"
+	"ArtistaManager.h"
+	"CancionManager.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\suscriptor.h
+	<string>
+	"Persona.h"
+	"Fecha.h"
+
+1763744029 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\suscriptorarchivo.h
+	<string>
+	"Suscriptor.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\playlistmanager.h
+	"PlaylistArchivo.h"
+	"PlaylistCancionArchivo.h"
+	"CancionArchivo.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\playlistarchivo.h
+	<string>
+	"Playlist.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\playlist.h
+	<string>
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\playlistcancionarchivo.h
+	<string>
+	"PlaylistCancion.h"
+
+1763744028 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\playlistcancion.h
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\persona.cpp
+	<cstring>
+	"Persona.h"
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\playlist.cpp
+	"Playlist.h"
+	<cstring>
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\playlistarchivo.cpp
+	"PlaylistArchivo.h"
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\playlistcancion.cpp
+	"PlaylistCancion.h"
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\playlistcancionarchivo.cpp
+	"PlaylistCancionArchivo.h"
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\playlistmanager.cpp
+	<iostream>
+	"PlaylistManager.h"
+
+1763744028 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\suscriptor.cpp
+	<cstring>
+	"Suscriptor.h"
+
+1763744029 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\suscriptorarchivo.cpp
+	"SuscriptorArchivo.h"
+	<iostream>
+
+1763744029 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\suscriptormanager.cpp
+	"SuscriptorManager.h"
+
+1763744029 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\suscriptormanager.h
+	"SuscriptorArchivo.h"
+
+1763745128 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\artistaarchivo.cpp
+	"ArtistaArchivo.h"
+
+1763744312 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\artistaarchivo.h
+	<string>
+	"Artista.h"
+
+1763754550 source:c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\artistamanager.cpp
+	<iostream>
+	"ArtistaManager.h"
+
+1763753880 c:\users\lourd\onedrive\documentos\utn - fede\programacion 2\appdemusica-fede\artistamanager.h
+	"Artista.h"
+	"ArtistaArchivo.h"
+

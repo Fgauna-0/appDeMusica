@@ -47,6 +47,22 @@ void Fecha::setAnio(int a){
 
 
 ///
+void Fecha::cargarFecha(){
+    int fecha;
+
+    cout << "Dia: ";
+    cin >> fecha;
+    setDia(fecha);
+    cout << "Mes: ";
+    cin >> fecha;
+    setMes(fecha);
+    cout << "Anio: ";
+    cin >> fecha;
+    setAnio(fecha);
+}
+
+
+
 bool Fecha::esBisiesto(int a){
     return (a % 4 == 0 && a % 100 != 0) || (a % 400 == 0);
 }

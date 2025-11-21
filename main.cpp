@@ -9,25 +9,23 @@
 #include "Genero.h"
 #include "GeneroArchivo.h"
 #include "GeneroManager.h"
+#include "ArtistaManager.h"
+#include "CancionManager.h"
 
 using namespace std;
 
 int main()
 {
+    CancionManager c;
+    ArtistaManager a;
 
-    ///PlaylistManager a;
+    a.iniciarSesion();
 
-    GeneroManager g;
-
-    g.listarGeneros();
+    c.agregarCancion(a.getArtistaActual().getId());
 
 
 
-    ///a.crearPlaylist(1);
 
-    //a.mostrarPlaylistDelSuscriptor(1);
-
-    ///a.mostrarCancionesDePlaylist(1);
 
     return 0;
 }

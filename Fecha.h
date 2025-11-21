@@ -22,6 +22,7 @@ class Fecha
         ///Comportamientos
         bool esBisiesto(int a);
         bool fechaValida(int d, int m, int a);
+        void cargarFecha();
         string toCSV();
 
         ///Comparaciones

@@ -15,6 +15,7 @@
 					<Add option="-g" />
 					<Add directory="../appDeMusica" />
 					<Add directory="appDeMusica" />
+					<Add directory="../appDeMusica-fede" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -26,6 +27,7 @@
 					<Add option="-O2" />
 					<Add directory="../appDeMusica" />
 					<Add directory="appDeMusica" />
+					<Add directory="../appDeMusica-fede" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,6 +40,10 @@
 		</Compiler>
 		<Unit filename="Artista.cpp" />
 		<Unit filename="Artista.h" />
+		<Unit filename="ArtistaArchivo.cpp" />
+		<Unit filename="ArtistaArchivo.h" />
+		<Unit filename="ArtistaManager.cpp" />
+		<Unit filename="ArtistaManager.h" />
 		<Unit filename="Cancion.cpp" />
 		<Unit filename="Cancion.h" />
 		<Unit filename="CancionArchivo.cpp" />

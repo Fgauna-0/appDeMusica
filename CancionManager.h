@@ -1,6 +1,8 @@
 #pragma once
 #include "CancionArchivo.h"
 #include "Cancion.h"
+#include "Artista.h"
+#include "ArtistaArchivo.h"
 
 
 class CancionManager
