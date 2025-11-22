@@ -10,6 +10,7 @@ class ArtistaManager
         void registrarArtista();
         void mostrarArtistaPorId(int id);
         bool iniciarSesion();
+        void cerrarSesion();
         Artista getArtistaActual();
         bool getHaySesion();
 

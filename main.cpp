@@ -24,7 +24,7 @@ int main()
     c.agregarCancion(a.getArtistaActual().getId());
 
 
-
+    c.mostrarCancionPorId(1);
 
 
     return 0;

@@ -53,9 +53,8 @@ void GeneroManager::listarGeneros(){
     Genero g;
     int total = archivo.getCantidadRegistros();
 
-    cout << "=======================================" << endl;
-    cout << "#         GENEROS DISPONIBLES          #" << endl;
-    cout << "=======================================" << endl;
+    cout << "-Generos disponibles-" << endl;
+
     for(int i=0; i < total; i++){
         if(archivo.leer(i,g) && g.getEstado()){
             cout << g.getIdGenero() << ". " << g.getNombreGenero() << endl;

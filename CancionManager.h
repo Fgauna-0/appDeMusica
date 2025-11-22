@@ -1,8 +1,8 @@
 #pragma once
 #include "CancionArchivo.h"
 #include "Cancion.h"
-#include "Artista.h"
-#include "ArtistaArchivo.h"
+#include "ArtistaManager.h"
+#include "GeneroManager.h"
 
 
 class CancionManager
@@ -10,6 +10,7 @@ class CancionManager
     public:
         CancionManager();
         void agregarCancion(int idArtista);
+        void mostrarCancionPorId(int id);
 
 
     private:

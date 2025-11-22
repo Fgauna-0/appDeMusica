@@ -51,12 +51,11 @@ void ArtistaManager::registrarArtista(){
 }
 
 void ArtistaManager::mostrarArtistaPorId(int id){
-    ArtistaArchivo archivo;
     Artista a;
 
-    int pos = archivo.buscarId(id);
+    int pos = _repo.buscarId(id);
 
-    if(archivo.leer(pos, a)){
+    if(_repo.leer(pos, a)){
         cout << a.toCSV() << endl;
     }
     else{
@@ -101,4 +100,10 @@ Artista ArtistaManager::getArtistaActual(){
 
 bool ArtistaManager::getHaySesion(){
     return _haySesion;
+}
+
+void ArtistaManager::cerrarSesion(){
+    _haySesion = false;
+    _artistaActual = Artista();
+    cout << "Sesion cerrada" << endl;
 }
