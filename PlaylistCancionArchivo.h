@@ -9,7 +9,8 @@ class PlaylistCancionArchivo
         bool guardar(PlaylistCancion& registro);
         bool leer(int pos, PlaylistCancion& registro);
         int getCantidadRegistros();
-
+        bool existeRelacion(int idPlaylist, int idCancion);
+        int buscarPorId(int idCancion, int idPlaylist);
 
 
     private:

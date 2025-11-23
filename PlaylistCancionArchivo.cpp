@@ -26,10 +26,8 @@ bool PlaylistCancionArchivo::leer(int pos, PlaylistCancion& registro){
         return false;
     }
 
-    PlaylistCancion playlistCancion;
-
     fseek(pFile, sizeof(PlaylistCancion) * pos, SEEK_SET);
-    bool ok = fread(&playlistCancion, sizeof(PlaylistCancion), 1, pFile);
+    bool ok = fread(&registro, sizeof(PlaylistCancion), 1, pFile);
 
     fclose(pFile);
 
@@ -46,4 +44,35 @@ int PlaylistCancionArchivo::getCantidadRegistros(){
     int cantidadRegistros = ftell(pFile) / sizeof(PlaylistCancion);
     fclose(pFile);
     return cantidadRegistros;
+}
+
+bool PlaylistCancionArchivo::existeRelacion(int idPlaylist, int idCancion){
+    PlaylistCancion pc;
+    int total = getCantidadRegistros();
+
+    for(int i = 0; i < total; i++){
+        leer(i, pc);
+        if(pc.getIdPlaylist() == idPlaylist && pc.getIdCancion() == idCancion){
+            return true;
+        }
+    }
+    return false;
+}
+
+int PlaylistCancionArchivo::buscarPorId(int idCancion, int idPlaylist){
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+
+    if(pFile == NULL) return -1;
+    PlaylistCancion playlist;
+
+    int i = 0;
+    while(fread(&playlist, sizeof(PlaylistCancion), 1, pFile)){
+        if(playlist.getIdCancion() == idCancion && playlist.getIdPlaylist() == idPlaylist){
+            fclose(pFile);
+            return i;
+        }
+        i++;
+    }
+    fclose(pFile);
+    return -1;
 }

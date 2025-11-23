@@ -36,6 +36,11 @@ void ArtistaManager::registrarArtista(){
     cout << "Ingresar Nombre: ";
     getline(cin, nombre);
 
+    if(_repo.buscarPorNombre(nombre) != -1){
+        cout << "Ya existe un artista con este nombre. \n";
+        return;
+    }
+
     cout << "Ingresar Pais: ";
     getline(cin, pais);
 

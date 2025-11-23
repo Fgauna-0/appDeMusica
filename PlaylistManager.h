@@ -2,6 +2,8 @@
 #include "PlaylistArchivo.h"
 #include "PlaylistCancionArchivo.h"
 #include "CancionArchivo.h"
+#include "SuscriptorManager.h"
+#include "ArtistaManager.h"
 
 
 class PlaylistManager
@@ -12,8 +14,9 @@ class PlaylistManager
         void mostrarPlaylistDelSuscriptor(int idSuscriptor);
         int getCantidadCancionesPlaylist(int idPlaylist);
         void mostrarCancionesDePlaylist(int idPlaylist);
-
-
+        void agregarCancionAPlaylistPorIdPlaylist(int idPlaylist);
+        void agregarCancionPorIdCancion(int idCancion);
+        void setSuscriptorActual(const Suscriptor& s);
 
 
     protected:
@@ -21,7 +24,9 @@ class PlaylistManager
     private:
         PlaylistArchivo _repoPlaylist;
         PlaylistCancionArchivo _repoPlaylistCancion;
+        ArtistaArchivo _repoArtista;
         CancionArchivo _repoCancion;
+        Suscriptor _suscriptorActual;
 
 };
 

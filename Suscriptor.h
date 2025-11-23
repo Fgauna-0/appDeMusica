@@ -27,7 +27,7 @@ class Suscriptor:public Persona
 
         ///Comportamientos
         std::string toCSV();
-
+        std::string mostrarFechaDeNacimiento();
 
     private:
         int _tipoSuscripcion;

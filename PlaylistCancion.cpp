@@ -1,7 +1,7 @@
 #include "PlaylistCancion.h"
 
 PlaylistCancion::PlaylistCancion()
-:_idPlaylist(0), _idCancion(0), _estado(0){
+:_idPlaylist(0), _idCancion(0), _estado(1){
 
 }
 

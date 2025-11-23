@@ -1,5 +1,6 @@
 #pragma once
 #include "SuscriptorArchivo.h"
+#include "PlaylistManager.h"
 
 
 class SuscriptorManager
@@ -12,6 +13,7 @@ class SuscriptorManager
         bool haySesion();
         void modificarNombre();
         void modificarSuscripcion();
+        Suscriptor getSuscriptorActual();
 
     private:
 

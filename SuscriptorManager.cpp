@@ -22,7 +22,7 @@ void SuscriptorManager::registrarSuscriptor(){
     cout << endl << "Ingresar DNI: ";
     getline(cin, dni);
 
-    if (dni.size() < 7 || dni.size() > 9) {
+    if (dni.size() != 8) {
         cout << "DNI invalido. \n";
         return;
     }
@@ -49,7 +49,12 @@ void SuscriptorManager::registrarSuscriptor(){
     cout << endl <<"Ingresar Telefono: " ;
     getline(cin, telefono);
 
-    cout << endl <<"Ingresar fecha de nacimiento: ";
+    if (telefono.size() != 10) {
+        cout << "DNI invalido. \n";
+        return;
+    }
+
+    cout << endl <<"Ingresar fecha de nacimiento: " << endl;
 
     if(!fecha.cargarFecha()){
         cout << "Fecha invalida";
@@ -68,6 +73,8 @@ void SuscriptorManager::registrarSuscriptor(){
     cin.ignore();
     getline(cin,contrasenia);
 
+    cout << endl;
+
     s.setId(_repo.getNuevoId());
     s.setDni(dni);
     s.setNombre(nombre);
@@ -75,6 +82,7 @@ void SuscriptorManager::registrarSuscriptor(){
     s.setEmail(email);
     s.setTelefono(telefono);
     s.setTipoSuscripcion(tipoSuscripcion);
+    s.setContrasenia(contrasenia);
     s.setFechaNacimiento(fecha);
     s.setReproducciones(0);
     s.setEstado(true);
@@ -97,7 +105,7 @@ bool SuscriptorManager::iniciarSesion(){
     int total = _repo.getCantidadRegistros();
 
     cout << "=======================================" << endl;
-    cout << "#      INICIAR SESSION - ARTISTA       #" << endl;
+    cout << "#      INICIAR SESSION - USUARIO       #" << endl;
     cout << "=======================================" << endl;
 
     cout << "Ingresar DNI: ";
@@ -128,6 +136,10 @@ void SuscriptorManager::cerrarSesion(){
 
 bool SuscriptorManager::haySesion(){
     return _haySesion;
+}
+
+Suscriptor SuscriptorManager::getSuscriptorActual(){
+    return _suscriptorActual;
 }
 
 void SuscriptorManager::modificarNombre(){

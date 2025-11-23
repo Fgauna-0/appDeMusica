@@ -41,7 +41,7 @@
 1763744028 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\genero.h
 	<string>
 
-1763863656 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
+1763922410 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
 	<iostream>
 	"Cancion.h"
 	"Persona.h"
@@ -58,7 +58,7 @@
 	"SuscriptorManager.h"
 	"FuncionesGlobales.h"
 
-1763744028 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptor.h
+1763916248 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptor.h
 	<string>
 	"Persona.h"
 	"Fecha.h"
@@ -85,41 +85,44 @@
 	<string>
 	"Playlist.h"
 
-1763744028 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancion.cpp
+1763913713 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancion.cpp
 	"PlaylistCancion.h"
 
 1763744028 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancion.h
 
-1763744028 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancionarchivo.cpp
+1763922396 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancionarchivo.cpp
 	"PlaylistCancionArchivo.h"
 
-1763744028 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancionarchivo.h
+1763920980 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancionarchivo.h
 	<string>
 	"PlaylistCancion.h"
 
-1763744028 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptor.cpp
+1763916248 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptor.cpp
 	<cstring>
 	"Suscriptor.h"
 
-1763850794 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptorarchivo.cpp
+1763873494 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptorarchivo.cpp
 	"SuscriptorArchivo.h"
 	<iostream>
 
-1763862572 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.cpp
+1763911483 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.cpp
 	<iostream>
 	"SuscriptorManager.h"
 
-1763852521 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.h
+1763870650 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.h
 	"SuscriptorArchivo.h"
+	"PlaylistManager.h"
 
-1763836195 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistmanager.cpp
+1763913186 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistmanager.cpp
 	<iostream>
 	"PlaylistManager.h"
 
-1763834915 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistmanager.h
+1763923937 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistmanager.h
 	"PlaylistArchivo.h"
 	"PlaylistCancionArchivo.h"
 	"CancionArchivo.h"
+	"SuscriptorManager.h"
+	"ArtistaManager.h"
 
 1571584339 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\rlutil.h
 	<iostream>
@@ -135,11 +138,11 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1763863929 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionmanager.cpp
+1763869877 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionmanager.cpp
 	<iostream>
 	"CancionManager.h"
 
-1763859471 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionmanager.h
+1763868985 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionmanager.h
 	"CancionArchivo.h"
 	"Cancion.h"
 	"ArtistaManager.h"
@@ -324,7 +327,7 @@
 	"Artista.h"
 	"FuncionesGlobales.h"
 
-1763863809 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artistamanager.cpp
+1763868985 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artistamanager.cpp
 	<iostream>
 	"ArtistaManager.h"
 

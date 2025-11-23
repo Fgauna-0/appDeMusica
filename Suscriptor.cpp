@@ -67,4 +67,8 @@ std::string Suscriptor::toCSV(){
 
 }
 
+std::string Suscriptor::mostrarFechaDeNacimiento(){
+    return _fechaNacimiento.toCSV();
+}
+
 

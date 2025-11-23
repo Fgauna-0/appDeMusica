@@ -22,6 +22,7 @@ bool SuscriptorArchivo::guardar(Suscriptor suscriptor){
 }
 
 bool SuscriptorArchivo::leer(int pos, Suscriptor& registro){
+
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) return false;
     fseek(p, pos * sizeof(Suscriptor), SEEK_SET);

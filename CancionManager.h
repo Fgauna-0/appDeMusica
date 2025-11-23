@@ -12,6 +12,7 @@ class CancionManager
         void agregarCancion(int idArtista);
         void mostrarCancionPorId(int id);
         void mostrarCancionesPorNombre(string nombre);
+        void mostrarCancionesPorArtista(string nombre);
 
 
     private:
