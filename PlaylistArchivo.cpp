@@ -49,3 +49,20 @@ int PlaylistArchivo::buscarPorId(int id){
     return -1;
 }
 
+int PlaylistArchivo::getNuevoId(){
+
+    return getCantidadRegistros() + 1;
+
+}
+
+bool PlaylistArchivo::eliminarPlaylist(int idPlaylist){
+    Playlist p;
+    leer(buscarPorId(idPlaylist), p);
+
+    if(p.getEstado()){
+        p.setEstado(false);
+        return true;
+    }
+
+    return false;
+}

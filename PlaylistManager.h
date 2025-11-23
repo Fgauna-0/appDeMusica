@@ -20,7 +20,8 @@ class PlaylistManager
 
     private:
         PlaylistArchivo _repoPlaylist;
-        PlaylistCancionArchivo _repoCancion;
+        PlaylistCancionArchivo _repoPlaylistCancion;
+        CancionArchivo _repoCancion;
 
 };
 

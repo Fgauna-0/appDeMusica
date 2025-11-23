@@ -11,7 +11,9 @@ class SuscriptorArchivo
         bool leer(int pos, Suscriptor& registro);
         int buscarId(int id);
         int getCantidadRegistros();
-
+        int getNuevoId();
+        int buscarPorDni(std::string dni);
+        int buscarPorEmail(std::string email);
 
     private:
         std::string _nombreArchivo;

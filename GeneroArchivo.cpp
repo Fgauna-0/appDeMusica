@@ -51,3 +51,21 @@ int GeneroArchivo::buscarId(int id){
     fclose(pFile);
     return -1;
 }
+
+int GeneroArchivo::getNuevoId(){
+
+    return getCantidadRegistros() + 1;
+
+}
+
+bool GeneroArchivo::eliminarGenero(int idGenero){
+    Genero g;
+    leer(buscarId(idGenero), g);
+
+    if(g.getEstado()){
+        g.setEstado(false);
+        return true;
+    }
+
+    return false;
+}

@@ -10,6 +10,8 @@ class GeneroArchivo
         bool leer(int pos, Genero &registro);
         int getCantidadRegistros();
         int buscarId(int id);
+        int getNuevoId();
+        bool eliminarGenero(int idGenero);
 
     protected:
 

@@ -34,6 +34,7 @@ int ArtistaArchivo::getCantidadRegistros(){
 }
 
 int ArtistaArchivo::buscarId(int id){
+
     FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
 
     if(pFile == NULL){
@@ -51,4 +52,57 @@ int ArtistaArchivo::buscarId(int id){
     }
     fclose(pFile);
     return -1;
+}
+
+int ArtistaArchivo::getNuevoId(){
+
+    return getCantidadRegistros() + 1;
+
+}
+
+bool ArtistaArchivo::eliminarArtista(Artista &registro){
+    if(registro.getEstado()){
+        registro.setEstado(false);
+        return true;
+    }
+
+    return false;
+}
+
+int ArtistaArchivo::buscarPorNombre(std::string nombre){
+
+    FuncionesGlobales f;
+    Artista a;
+    int total = getCantidadRegistros();
+
+    for(int i = 0; i < total; i++){
+        leer(i, a);
+        if(f.aMinuscula(a.getNombre()) == f.aMinuscula(nombre)){
+            return i;
+        }
+    }
+    return -1;
+}
+
+int ArtistaArchivo::buscarPorDni(std::string dni){
+
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+
+    if(pFile == NULL){
+        return -1;
+    }
+    Artista artista;
+
+    int i = 0;
+
+    while(fread(&artista, sizeof(Artista), 1, pFile)){
+        if(artista.getDni() == dni){
+            fclose(pFile);
+            return i;
+        }
+        i++;
+    }
+    fclose(pFile);
+    return -1;
+
 }

@@ -1,18 +1,139 @@
+#include <iostream>
 #include "SuscriptorManager.h"
+
+using namespace std;
 
 SuscriptorManager::SuscriptorManager()
 {
     //ctor
 }
 
-void registrarSuscriptor(){
+void SuscriptorManager::registrarSuscriptor(){
+
+    Suscriptor s;
+    string dni, nombre, apellido, email, telefono, contrasenia;
+    int tipoSuscripcion;
+    Fecha fecha;
+
+    cout << "=======================================" << endl;
+    cout << "#            CREAR CUENTA             #" << endl;
+    cout << "=======================================" << endl;
+
+    cout << endl << "Ingresar DNI: ";
+    getline(cin, dni);
+
+    if (dni.size() < 7 || dni.size() > 9) {
+        cout << "DNI invalido. \n";
+        return;
+    }
+
+    if (_repo.buscarPorDni(dni) != -1) {
+        cout << "Ya existe un suscriptor con ese DNI.\n";
+        return;
+    }
+
+    cout << endl <<"Ingresar Nombre: ";
+    getline(cin, nombre);
+
+    cout << endl << "Ingresar Apellido: ";
+    getline(cin, apellido);
+
+    cout << endl <<"Ingresar Email: ";
+    getline(cin, email);
+
+    if (_repo.buscarPorEmail(email) != -1) {
+        cout << "Ya existe una cuenta con ese email.\n";
+        return;
+    }
+
+    cout << endl <<"Ingresar Telefono: " ;
+    getline(cin, telefono);
+
+    cout << endl <<"Ingresar fecha de nacimiento: ";
+
+    if(!fecha.cargarFecha()){
+        cout << "Fecha invalida";
+        return;
+    }
+
+    cout << endl << "Ingresar el tipo de suscripcion: " << endl;
+    cout << "==========================================" << endl;
+    cout << "1. Gratuita - Acceso limitado y publicidad." << endl;
+    cout << "2. Premium - Acceso ilimitado y sin publicidad." << endl;
+    cout << "==========================================" << endl;
+    cout << "Opcion: ";
+    cin >> tipoSuscripcion;
+
+    cout << "Ingresar Contrasenia: ";
+    cin.ignore();
+    getline(cin,contrasenia);
+
+    s.setId(_repo.getNuevoId());
+    s.setDni(dni);
+    s.setNombre(nombre);
+    s.setApellido(apellido);
+    s.setEmail(email);
+    s.setTelefono(telefono);
+    s.setTipoSuscripcion(tipoSuscripcion);
+    s.setFechaNacimiento(fecha);
+    s.setReproducciones(0);
+    s.setEstado(true);
+
+    if(_repo.guardar(s)){
+        cout << "Registro completado exitosamente!" << endl;
+    }
+    else{
+        cout << "Ha ocurrido un error" << endl;
+    }
+
 
 }
 
-void modificarNombre(){
+bool SuscriptorManager::iniciarSesion(){
+
+    Suscriptor s;
+    string dni;
+    string contrasenia;
+    int total = _repo.getCantidadRegistros();
+
+    cout << "=======================================" << endl;
+    cout << "#      INICIAR SESSION - ARTISTA       #" << endl;
+    cout << "=======================================" << endl;
+
+    cout << "Ingresar DNI: ";
+    getline(cin, dni);
+
+    cout << "Ingresar contrasenia: ";
+    getline(cin, contrasenia);
+
+    for(int i = 0; i < total; i++){
+        _repo.leer(i, s);
+        if(s.getDni() == dni && s.getContrasenia() == contrasenia && s.getEstado()){
+            cout << "Inicio de session exitoso!!. " << "Bienvenido " << s.getNombre() << endl;
+            _suscriptorActual = s;
+            _haySesion = true;
+            return true;
+        }
+    }
+
+    cout << "DNI o contrasenia incorrecto. Vuelva a intentarlo." << endl;
+    return false;
+}
+
+void SuscriptorManager::cerrarSesion(){
+    _haySesion = false;
+    _suscriptorActual = Suscriptor();
+    cout << "Sesion cerrada";
+}
+
+bool SuscriptorManager::haySesion(){
+    return _haySesion;
+}
+
+void SuscriptorManager::modificarNombre(){
 
 }
 
-void modificarSuscripcion(){
+void SuscriptorManager::modificarSuscripcion(){
 
 }

@@ -10,34 +10,39 @@ GeneroManager::GeneroManager()
 
 void GeneroManager::agregarGenero(){
 
-    GeneroArchivo archivo;
     Genero g;
     std::string nombre;
 
     cout << "=======================================" << endl;
     cout << "#           AGREGAR GENERO             #" << endl;
     cout << "=======================================" << endl;
-    cout << "Ingrese el nombre: ";
+    cout << "Ingresar nombre: ";
     getline(cin, nombre);
 
-    g.setIdGenero(archivo.getCantidadRegistros() + 1);
+    cout << endl;
+
+    g.setIdGenero(_repo.getNuevoId());
     g.setReproduccionesGenero(0);
     g.setEstado(true);
     g.setNombreGenero(nombre);
 
-    if(archivo.guardar(g)) cout << "Se creo exitosamente!" << endl;
+    if(_repo.guardar(g)) cout << "Se agrego exitosamente!" << endl;
     else cout << "Ha ocurrido un error" << endl;
 
 }
 
 void GeneroManager::mostrarGeneroPorId(int id){
 
-    GeneroArchivo archivo;
     Genero g;
 
-    int pos = archivo.buscarId(id);
+    int pos = _repo.buscarId(id);
 
-    if(archivo.leer(pos, g)){
+    if(pos == -1){
+        cout << "No existe Genero con ID " << id << endl;
+        return;
+    }
+
+    if(_repo.leer(pos, g)){
         cout << g.toCSV() << endl;
     }
     else{
@@ -49,14 +54,18 @@ void GeneroManager::mostrarGeneroPorId(int id){
 
 void GeneroManager::listarGeneros(){
 
-    GeneroArchivo archivo;
     Genero g;
-    int total = archivo.getCantidadRegistros();
+    int total = _repo.getCantidadRegistros();
+
+    if(total == 0){
+        cout << "No hay generos disponibles";
+        return;
+    }
 
     cout << "-Generos disponibles-" << endl;
 
     for(int i=0; i < total; i++){
-        if(archivo.leer(i,g) && g.getEstado()){
+        if(_repo.leer(i,g) && g.getEstado()){
             cout << g.getIdGenero() << ". " << g.getNombreGenero() << endl;
         }
 

@@ -10,7 +10,6 @@ PlaylistManager::PlaylistManager()
 
 void PlaylistManager::crearPlaylist(int idSuscriptor){
 
-    PlaylistArchivo archivo;
     Playlist p;
     string nombre;
 
@@ -20,13 +19,13 @@ void PlaylistManager::crearPlaylist(int idSuscriptor){
     cout << "-Ingrese el nombre de la playlist: " << endl;
     getline(cin, nombre);
 
-    p.setIdPlaylist(archivo.getCantidadRegistros() + 1);
+    p.setIdPlaylist(_repoPlaylist.getNuevoId());
     p.setIdSuscriptor(idSuscriptor);
     p.setNombrePlaylist(nombre);
     p.setReproducciones(0);
     p.setEstado(true);
 
-    if(archivo.guardar(p)){
+    if(_repoPlaylist.guardar(p)){
         cout << "Playlist creada exitosamente!" << endl;
     }else{
         cout << "No se pudo crear la playlist..." << endl;
@@ -35,9 +34,8 @@ void PlaylistManager::crearPlaylist(int idSuscriptor){
 
 void PlaylistManager::mostrarPlaylistDelSuscriptor(int idSuscriptor){
 
-    PlaylistArchivo archivo;
     Playlist p;
-    int total = archivo.getCantidadRegistros();
+    int total = _repoPlaylist.getCantidadRegistros();
     bool hay = false;
 
     cout << "=======================================" << endl;
@@ -45,7 +43,7 @@ void PlaylistManager::mostrarPlaylistDelSuscriptor(int idSuscriptor){
     cout << "=======================================" << endl;
 
     for(int i = 0; i < total; i++){
-        if(archivo.leer(i,p) && p.getEstado() && p.getIdSuscriptor() == idSuscriptor){
+        if(_repoPlaylist.leer(i,p) && p.getEstado() && p.getIdSuscriptor() == idSuscriptor){
             int cantidad = getCantidadCancionesPlaylist(p.getIdPlaylist());
             cout << "ID: " << p.getIdPlaylist() << "| Nombre: " << p.getNombrePlaylist() << " | Canciones: " << cantidad << endl;
             hay = true;
@@ -57,13 +55,12 @@ void PlaylistManager::mostrarPlaylistDelSuscriptor(int idSuscriptor){
 
 int PlaylistManager::getCantidadCancionesPlaylist(int idPlaylist){
 
-    PlaylistCancionArchivo archivo;
     PlaylistCancion canciones;
-    int total = archivo.getCantidadRegistros();
+    int total = _repoPlaylist.getCantidadRegistros();
     int contador = 0;
 
     for(int i = 0; i < total; i++){
-        if(archivo.leer(i, canciones)){
+        if(_repoPlaylistCancion.leer(i, canciones)){
             if(canciones.getIdPlaylist() == idPlaylist && canciones.getEstado()){
                 contador ++;
             }
@@ -74,12 +71,9 @@ int PlaylistManager::getCantidadCancionesPlaylist(int idPlaylist){
 
 void PlaylistManager::mostrarCancionesDePlaylist(int idPlaylist){
 
-    PlaylistCancionArchivo playArchivo;
-    CancionArchivo cancionArchivo;
-
     PlaylistCancion p;
     Cancion c;
-    int total = playArchivo.getCantidadRegistros();
+    int total = _repoPlaylistCancion.getCantidadRegistros();
     bool hay = false;
 
     cout << "=======================================" << endl;
@@ -87,10 +81,10 @@ void PlaylistManager::mostrarCancionesDePlaylist(int idPlaylist){
     cout << "=======================================" << endl;
 
     for(int i=0; i < total; i++){
-        if(playArchivo.leer(i,p)){
+        if(_repoPlaylistCancion.leer(i,p)){
             if(p.getEstado() && p.getIdPlaylist() == idPlaylist){
-                int pos = cancionArchivo.buscarId(p.getIdCancion());
-                if (pos >= 0 && cancionArchivo.leer(pos, c)){
+                int pos = _repoCancion.buscarId(p.getIdCancion());
+                if (pos >= 0 && _repoCancion.leer(pos, c)){
                         cout << "- " << c.getNombreCancion() << endl;
                         hay = true;
                     }

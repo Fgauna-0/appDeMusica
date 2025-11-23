@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Cancion.h"
+#include "FuncionesGlobales.h"
 
 class CancionArchivo
 {
@@ -10,9 +11,9 @@ class CancionArchivo
         bool leer(int pos, Cancion &registro);
         int getCantidadRegistros();
         int buscarId(int id);
-
-
-
+        int getNuevoId();
+        bool eliminarCancion(int idCancion);
+        int buscarPorNombre(std::string nombre);
 
     private:
         std::string _nombreArchivo;

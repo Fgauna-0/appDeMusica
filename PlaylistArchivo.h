@@ -10,6 +10,8 @@ class PlaylistArchivo
         bool leer(int pos, Playlist& registro);
         int getCantidadRegistros();
         int buscarPorId(int id);
+        int getNuevoId();
+        bool eliminarPlaylist(int idPlaylist);
 
 
     private:

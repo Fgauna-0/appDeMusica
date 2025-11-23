@@ -63,3 +63,54 @@ int SuscriptorArchivo::getCantidadRegistros(){
     fclose(pFile);
     return cantidadRegistros;
 }
+
+int SuscriptorArchivo::getNuevoId(){
+
+    return getCantidadRegistros() + 1;
+
+}
+
+int SuscriptorArchivo::buscarPorDni(std::string dni){
+
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+
+    if(pFile == NULL){
+        return -1;
+    }
+    Suscriptor suscriptor;
+
+    int i = 0;
+
+    while(fread(&suscriptor, sizeof(Suscriptor), 1, pFile)){
+        if(suscriptor.getDni() == dni){
+            fclose(pFile);
+            return i;
+        }
+        i++;
+    }
+    fclose(pFile);
+    return -1;
+
+}
+
+int SuscriptorArchivo::buscarPorEmail(std::string email){
+
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+
+    if(pFile == NULL){
+        return -1;
+    }
+    Suscriptor suscriptor;
+
+    int i = 0;
+
+    while(fread(&suscriptor, sizeof(Suscriptor), 1, pFile)){
+        if(suscriptor.getEmail() == email){
+            fclose(pFile);
+            return i;
+        }
+        i++;
+    }
+    fclose(pFile);
+    return -1;
+}

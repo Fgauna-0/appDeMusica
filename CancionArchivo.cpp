@@ -52,3 +52,37 @@ int CancionArchivo::buscarId(int id){
     fclose(pFile);
     return -1;
 }
+
+int CancionArchivo::getNuevoId(){
+
+    return getCantidadRegistros() + 1;
+
+}
+
+bool CancionArchivo::eliminarCancion(int idCancion){
+
+    Cancion c;
+    leer(buscarId(idCancion), c);
+
+    if(c.getEstado()){
+        c.setEstado(false);
+        return true;
+    }
+
+    return false;
+}
+
+int CancionArchivo::buscarPorNombre(std::string nombre){
+
+    FuncionesGlobales f;
+    Cancion c;
+    int total = getCantidadRegistros();
+
+    for(int i = 0; i < total; i++){
+        leer(i, c);
+        if(f.aMinuscula(c.getNombreCancion()) == f.aMinuscula(nombre)){
+            return i;
+        }
+    }
+    return -1;
+}

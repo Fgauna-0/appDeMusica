@@ -16,6 +16,7 @@
 					<Add directory="../appDeMusica" />
 					<Add directory="appDeMusica" />
 					<Add directory="../appDeMusica-fede" />
+					<Add directory="./" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -28,6 +29,7 @@
 					<Add directory="../appDeMusica" />
 					<Add directory="appDeMusica" />
 					<Add directory="../appDeMusica-fede" />
+					<Add directory="./" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -52,6 +54,8 @@
 		<Unit filename="CancionManager.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="FuncionesGlobales.cpp" />
+		<Unit filename="FuncionesGlobales.h" />
 		<Unit filename="Genero.cpp" />
 		<Unit filename="Genero.h" />
 		<Unit filename="GeneroArchivo.cpp" />

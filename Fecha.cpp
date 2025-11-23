@@ -9,8 +9,8 @@ Fecha::Fecha()
 
 }
 
-Fecha::Fecha(int d, int m, int a)
-:_dia(1), _mes(1), _anio(1){
+Fecha::Fecha(int d, int m, int a){
+
     if(fechaValida(d,m,a)){
         setDia(d);
         setMes(m);
@@ -20,7 +20,6 @@ Fecha::Fecha(int d, int m, int a)
         setMes(-1);
         setAnio(-1);
     }
-
 }
 
 ///Getters
@@ -47,18 +46,28 @@ void Fecha::setAnio(int a){
 
 
 ///
-void Fecha::cargarFecha(){
-    int fecha;
+bool Fecha::cargarFecha(){
+    int dia, mes, anio;
 
     cout << "Dia: ";
-    cin >> fecha;
-    setDia(fecha);
+    cin >> dia;
     cout << "Mes: ";
-    cin >> fecha;
-    setMes(fecha);
+    cin >> mes;
     cout << "Anio: ";
-    cin >> fecha;
-    setAnio(fecha);
+    cin >> anio;
+
+    if(fechaValida(dia, mes, anio)){
+        setDia(dia);
+        setMes(mes);
+        setAnio(anio);
+        return true;
+    }
+
+    // Fecha inválida
+    setDia(-1);
+    setMes(-1);
+    setAnio(-1);
+    return false;
 }
 
 

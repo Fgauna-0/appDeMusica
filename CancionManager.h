@@ -11,11 +11,13 @@ class CancionManager
         CancionManager();
         void agregarCancion(int idArtista);
         void mostrarCancionPorId(int id);
+        void mostrarCancionesPorNombre(string nombre);
 
 
     private:
 
         CancionArchivo _repo;
+        ArtistaArchivo _repoArtista;
 };
 
 

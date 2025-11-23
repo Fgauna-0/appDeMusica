@@ -11,7 +11,6 @@ ArtistaManager::ArtistaManager()
 void ArtistaManager::registrarArtista(){
 
     Artista a;
-    ArtistaArchivo archivo;
     string nombre;
     string dni;
     string pais;
@@ -24,6 +23,16 @@ void ArtistaManager::registrarArtista(){
     cout << "Ingresar DNI: ";
     getline(cin, dni);
 
+    if (dni.size() < 7 || dni.size() > 9) {
+        cout << "DNI invalido. \n";
+        return;
+    }
+
+    if (_repo.buscarPorDni(dni) != -1) {
+        cout << "Ya existe un artista con ese DNI.\n";
+        return;
+    }
+
     cout << "Ingresar Nombre: ";
     getline(cin, nombre);
 
@@ -33,7 +42,7 @@ void ArtistaManager::registrarArtista(){
     cout << "Ingresar Contrasenia: ";
     getline(cin, contrasenia);
 
-    a.setId(archivo.getCantidadRegistros() + 1);
+    a.setId(_repo.getNuevoId());
     a.setDni(dni);
     a.setNombre(nombre);
     a.setNacionalidad(pais);
@@ -41,7 +50,7 @@ void ArtistaManager::registrarArtista(){
     a.setEstado(true);
     a.setReproducciones(0);
 
-    if(archivo.guardar(a)){
+    if(_repo.guardar(a)){
         cout << "Artista registrado exitosamente!" << endl;
     }
     else{
@@ -54,6 +63,11 @@ void ArtistaManager::mostrarArtistaPorId(int id){
     Artista a;
 
     int pos = _repo.buscarId(id);
+
+    if(pos == -1){
+        cout << "No existe Artista con ID " << id << endl;
+        return;
+    }
 
     if(_repo.leer(pos, a)){
         cout << a.toCSV() << endl;

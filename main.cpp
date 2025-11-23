@@ -11,20 +11,15 @@
 #include "GeneroManager.h"
 #include "ArtistaManager.h"
 #include "CancionManager.h"
+#include "SuscriptorManager.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
 int main()
 {
-    CancionManager c;
-    ArtistaManager a;
-
-    a.iniciarSesion();
-
-    c.agregarCancion(a.getArtistaActual().getId());
 
 
-    c.mostrarCancionPorId(1);
 
 
     return 0;
