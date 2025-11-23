@@ -84,7 +84,13 @@ void CancionManager::mostrarCancionPorId(int id){
     }
 
     if(_repo.leer(pos, c)){
-        cout << c.toCSV() << endl;
+        Artista a;
+        Genero g;
+        if(_repoArtista.leerPorId(c.getIdArtista(), a) && _repoGenero.leerPorId(c.getIdGenero(),g)){
+
+           cout << "ID: " << c.getIdCancion() << " |Nombre: " << c.getNombreCancion() << " |Artista: " << a.getNombre() << " |Genero: " << g.getNombreGenero() << endl;
+
+           }
     }
     else{
         cout << "Ha ocurrido un error" << endl;
@@ -109,7 +115,7 @@ void CancionManager::mostrarCancionesPorNombre(string nombre){
                 int posArtista = _repoArtista.buscarId(c.getIdArtista());
                 if (posArtista != -1 && _repoArtista.leer(posArtista, a)) {
 
-                    cout << "|Cancion: " << c.getNombreCancion() << " |Artista: " << a.getNombre() << endl;
+                    cout << "|ID: " << c.getIdCancion() << " |Cancion: " << c.getNombreCancion() << " |Artista: " << a.getNombre() << endl;
 
                     encontrado = true;
                 }
@@ -155,7 +161,7 @@ void CancionManager::mostrarCancionesPorArtista(string nombre){
         if (_repo.leer(i, c)) {
             if (c.getIdArtista() == idBuscado && c.getEstado()) {
 
-                cout << "|Cancion: " << c.getNombreCancion() << " |Artista: " << a.getNombre() << endl;
+                cout << "|ID: " << c.getIdCancion() << " |Cancion: " << c.getNombreCancion() << " |Artista: " << a.getNombre() << endl;
                 encontrado = true;
             }
         }
@@ -164,4 +170,23 @@ void CancionManager::mostrarCancionesPorArtista(string nombre){
     if(!encontrado){
         cout << "El artista no tiene canciones cargadas.\n";
     }
+}
+
+void CancionManager::reproducirCancion(int idCancion){
+    Cancion c;
+    Artista a;
+    int posCancion = _repo.buscarId(idCancion);
+
+    _repo.leer(posCancion,c);
+
+    int posArtista = _repoArtista.buscarId(c.getIdArtista());
+
+    _repoArtista.leer(posArtista,a);
+
+    cout << "=======================================" <<endl;
+    cout << "Reproduciendo - " << c.getNombreCancion() << " |" << a.getNombre() << endl;
+    cout << "=======================================" <<endl;
+
+    c.setReproduccionesCancion(c.getReproduccionesCancion() + 1);
+
 }

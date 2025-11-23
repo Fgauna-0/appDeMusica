@@ -13,12 +13,14 @@ class CancionManager
         void mostrarCancionPorId(int id);
         void mostrarCancionesPorNombre(string nombre);
         void mostrarCancionesPorArtista(string nombre);
+        void reproducirCancion(int idCancion);
 
 
     private:
 
         CancionArchivo _repo;
         ArtistaArchivo _repoArtista;
+        GeneroArchivo _repoGenero;
 };
 
 

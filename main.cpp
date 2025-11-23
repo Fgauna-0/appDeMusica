@@ -13,6 +13,7 @@
 #include "CancionManager.h"
 #include "SuscriptorManager.h"
 #include "FuncionesGlobales.h"
+#include "MenuSuscriptor.h"
 
 using namespace std;
 
@@ -115,11 +116,6 @@ int main()
     cout << "ID GENERO: " << c.getIdGenero() << endl;
     cout << "Reproducciones: " << c.getReproduccionesCancion() << endl;*/
 
-    sm.iniciarSesion();
-
-    pm.setSuscriptorActual(sm.getSuscriptorActual());
-
-    pm.mostrarCancionesDePlaylist(1);
 
     /*int pos = pca.buscarPorId(1,1);
 
@@ -144,6 +140,14 @@ int main()
     cout << "ID CANCION: " << pcAux.getIdCancion() << endl;
     cout << "ID PLAYLIST: " << pcAux.getIdPlaylist() << endl;
     cout << "ESTADO: " << pcAux.getEstado() << endl;*/
+
+    if(sm.iniciarSesion()){
+
+        pm.setSuscriptorActual(sm.getSuscriptorActual());
+
+        MenuSuscriptor ms(sm,cm,pm);
+        ms.iniciar();
+    }
 
 
     return 0;

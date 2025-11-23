@@ -219,10 +219,59 @@ void PlaylistManager::agregarCancionAPlaylistPorIdPlaylist(int idPlaylist) {
     }
 }
 
-void PlaylistManager::agregarCancionPorIdCancion(int idCancion){
+void PlaylistManager::agregarCancionAPlaylistPorIdPlaylistYIdCancion(int idPlaylist, int idCancion){
+
+    Playlist p;
+    Cancion c;
+
+    int posPlaylist = _repoPlaylist.buscarPorId(idPlaylist);
+
+    if(posPlaylist == -1 || !_repoPlaylist.leer(posPlaylist, p)){
+        cout << "La playlist no existe.\n";
+        return;
+    }
+
+    if(p.getIdSuscriptor() != _suscriptorActual.getId()){
+        cout << "No tenes una playlist con ese ID.\n";
+        return;
+    }
+
+    if(!p.getEstado()){
+        cout << "La playlist esta dada de baja.\n";
+        return;
+    }
 
 
+    int posCancion = _repoCancion.buscarId(idCancion);
+    if(posCancion == -1){
+        cout << "No existe una cancion con ese ID.\n";
+        return;
+    }
 
+    _repoCancion.leer(posCancion, c);
+
+    if(!c.getEstado()){
+        cout << "La cancion esta deshabilitada.\n";
+        return;
+    }
+
+    if(_repoPlaylistCancion.existeRelacion(idPlaylist, idCancion)){
+        cout << "La cancion ya esta en la playlist.\n";
+        return;
+    }
+
+    // Crear relación
+    PlaylistCancion pc;
+    pc.setIdPlaylist(idPlaylist);
+    pc.setIdCancion(idCancion);
+    pc.setEstado(true);
+
+    if(_repoPlaylistCancion.guardar(pc)){
+        cout << "Cancion agregada correctamente!\n";
+    }
+    else {
+        cout << "Error al agregar la cancion.\n";
+    }
 }
 
 void PlaylistManager::setSuscriptorActual(const Suscriptor& s){

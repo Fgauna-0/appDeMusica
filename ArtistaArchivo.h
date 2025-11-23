@@ -10,6 +10,7 @@ class ArtistaArchivo
         ArtistaArchivo(std::string nombreArchivo = "artistas.dat");
         bool guardar(Artista& artista);
         bool leer(int pos, Artista &registro);
+        bool leerPorId(int id, Artista &registro);
         int getCantidadRegistros();
         int buscarId(int id);
         int getNuevoId();

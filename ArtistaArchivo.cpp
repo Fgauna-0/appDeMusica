@@ -23,6 +23,14 @@ bool ArtistaArchivo::leer(int pos, Artista &registro){
     return ok;
 }
 
+bool ArtistaArchivo::leerPorId(int id, Artista &registro){
+    int pos = buscarId(id);
+    if(leer(pos,registro)){
+        return true;
+    }
+    return false;
+}
+
 int ArtistaArchivo::getCantidadRegistros(){
     FILE* archivo = fopen(_nombreArchivo.c_str(), "rb");
     if (archivo == NULL) return 0;

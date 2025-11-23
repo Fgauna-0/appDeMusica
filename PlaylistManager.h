@@ -15,7 +15,7 @@ class PlaylistManager
         int getCantidadCancionesPlaylist(int idPlaylist);
         void mostrarCancionesDePlaylist(int idPlaylist);
         void agregarCancionAPlaylistPorIdPlaylist(int idPlaylist);
-        void agregarCancionPorIdCancion(int idCancion);
+        void agregarCancionAPlaylistPorIdPlaylistYIdCancion(int idPlaylist, int idCancion);
         void setSuscriptorActual(const Suscriptor& s);
 
 

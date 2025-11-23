@@ -22,6 +22,14 @@ bool GeneroArchivo::leer(int pos, Genero &registro){
     return ok;
 }
 
+bool GeneroArchivo::leerPorId(int id, Genero &registro){
+    int pos = buscarId(id);
+    if(leer(pos,registro)){
+        return true;
+    }
+    return false;
+}
+
 int GeneroArchivo::getCantidadRegistros(){
     FILE* archivo = fopen(_nombreArchivo.c_str(), "rb");
     if (archivo == NULL) return 0;

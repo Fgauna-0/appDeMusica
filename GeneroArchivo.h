@@ -8,6 +8,7 @@ class GeneroArchivo
         GeneroArchivo(std::string nombreArchivo = "generos.dat");
         bool guardar(Genero& genero);
         bool leer(int pos, Genero &registro);
+        bool leerPorId(int id, Genero &registro);
         int getCantidadRegistros();
         int buscarId(int id);
         int getNuevoId();
