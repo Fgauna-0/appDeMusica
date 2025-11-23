@@ -33,6 +33,14 @@ bool CancionArchivo::leer(int pos, Cancion &registro){
     return ok;
 }
 
+bool CancionArchivo::leerPorId(int id, Cancion &registro){
+    int pos = buscarId(id);
+    if(leer(pos,registro)){
+        return true;
+    }
+    return false;
+}
+
 int CancionArchivo::buscarId(int id){
     FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
 
@@ -85,4 +93,17 @@ int CancionArchivo::buscarPorNombre(std::string nombre){
         }
     }
     return -1;
+}
+
+bool CancionArchivo::modificar(int pos, Cancion& registro){
+
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) return false;
+
+    fseek(p, sizeof(Cancion) * pos, SEEK_SET);
+    bool ok = fwrite(&registro, sizeof(Cancion), 1, p);
+
+    fclose(p);
+    return ok;
+
 }

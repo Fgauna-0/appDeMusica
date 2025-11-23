@@ -21,6 +21,8 @@ class Genero
 
         std::string toCSV();
 
+        void sumarReproduccion();
+
     protected:
 
     private:

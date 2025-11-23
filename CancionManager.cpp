@@ -173,20 +173,40 @@ void CancionManager::mostrarCancionesPorArtista(string nombre){
 }
 
 void CancionManager::reproducirCancion(int idCancion){
+
+    // 1) Buscar canción
+    int pos = _repo.buscarId(idCancion);
+    if (pos == -1) {
+        cout << "No existe una canción con ese ID.\n";
+        return;
+    }
+
     Cancion c;
-    Artista a;
-    int posCancion = _repo.buscarId(idCancion);
+    _repo.leer(pos, c);
 
-    _repo.leer(posCancion,c);
+    // 2) Sumar reproducción a la canción
+    c.sumarReproduccion();
+    _repo.modificar(pos, c);
 
-    int posArtista = _repoArtista.buscarId(c.getIdArtista());
+    // 3) Sumar reproducción al ARTISTA
+    int posArt = _repoArtista.buscarId(c.getIdArtista());
+    if (posArt != -1) {
+        Artista a;
+        _repoArtista.leer(posArt, a);
+        a.sumarReproduccion();
+        _repoArtista.modificar(posArt, a);
+    }
 
-    _repoArtista.leer(posArtista,a);
+    // 4) Sumar reproducción al GÉNERO
+    int posGen = _repoGenero.buscarId(c.getIdGenero());
+    if (posGen != -1) {
+        Genero g;
+        _repoGenero.leer(posGen, g);
+        g.sumarReproduccion();
+        _repoGenero.modificar(posGen, g);
+    }
 
-    cout << "=======================================" <<endl;
-    cout << "Reproduciendo - " << c.getNombreCancion() << " |" << a.getNombre() << endl;
-    cout << "=======================================" <<endl;
-
-    c.setReproduccionesCancion(c.getReproduccionesCancion() + 1);
-
+    cout << "==========================================" <<endl;
+    cout << "REPRODUCIENDO: " << c.getNombreCancion() << endl;
+    cout << "==========================================" <<endl;
 }

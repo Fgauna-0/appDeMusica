@@ -71,4 +71,8 @@ std::string Suscriptor::mostrarFechaDeNacimiento(){
     return _fechaNacimiento.toCSV();
 }
 
+void Suscriptor::sumarReproduccion(){
+    _reproducciones++;
+}
+
 

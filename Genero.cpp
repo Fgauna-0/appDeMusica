@@ -53,4 +53,6 @@ string Genero::toCSV(){
     "," + to_string(_reproduccionesGenero);
 }
 
-
+void Genero::sumarReproduccion(){
+    _reproduccionesGenero++;
+}

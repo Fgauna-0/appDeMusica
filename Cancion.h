@@ -30,6 +30,7 @@ class Cancion
 
         ///Comportamientos
         string toCSV();
+        void sumarReproduccion();
 
     protected:
 

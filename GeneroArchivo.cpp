@@ -77,3 +77,15 @@ bool GeneroArchivo::eliminarGenero(int idGenero){
 
     return false;
 }
+
+bool GeneroArchivo::modificar(int pos, Genero& registro){
+
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) return false;
+
+    fseek(p, sizeof(Genero) * pos, SEEK_SET);
+    bool ok = fwrite(&registro, sizeof(Genero), 1, p);
+
+    fclose(p);
+    return ok;
+}

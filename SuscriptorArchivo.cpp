@@ -31,6 +31,14 @@ bool SuscriptorArchivo::leer(int pos, Suscriptor& registro){
     return ok;
 }
 
+bool SuscriptorArchivo::leerPorId(int id, Suscriptor& registro){
+    int pos = buscarId(id);
+    if(leer(pos,registro)){
+        return true;
+    }
+    return false;
+}
+
 int SuscriptorArchivo::buscarId(int id){
 
     FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
@@ -114,4 +122,16 @@ int SuscriptorArchivo::buscarPorEmail(std::string email){
     }
     fclose(pFile);
     return -1;
+}
+
+bool SuscriptorArchivo::modificar(int pos, Suscriptor& registro){
+
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) return false;
+
+    fseek(p, sizeof(Suscriptor) * pos, SEEK_SET);
+    bool ok = fwrite(&registro, sizeof(Suscriptor), 1, p);
+
+    fclose(p);
+    return ok;
 }

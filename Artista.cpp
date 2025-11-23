@@ -22,6 +22,9 @@ void Artista::setNacionalidad(std::string nacionalidad){
     _nacionalidad[sizeof(_nacionalidad) - 1] = '\0';
 }
 
+void Artista::sumarReproduccion(){
+    _reproducciones++;
+}
 
 /// MOSTRAMOS O EXPORTAMOS TEXTO
 std::string Artista::toCSV(){

@@ -67,7 +67,9 @@ void Cancion::setFecha(Fecha fecha){
     _fechaPublicacion = fecha;
 }
 
-
+void Cancion::sumarReproduccion(){
+    _reproduccionesCancion++;
+}
 
 /// MOSTRAMOS O EXPORTAMOS TEXTO
 string Cancion::toCSV(){

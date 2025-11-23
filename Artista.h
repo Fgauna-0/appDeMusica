@@ -17,6 +17,8 @@ class Artista:public Persona
         ///
         std::string toCSV();
 
+        void sumarReproduccion();
+
     private:
         char _nacionalidad[31];
 };

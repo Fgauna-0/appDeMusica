@@ -114,3 +114,14 @@ int ArtistaArchivo::buscarPorDni(std::string dni){
     return -1;
 
 }
+
+bool ArtistaArchivo::modificar(int pos, Artista& registro){
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) return false;
+
+    fseek(p, sizeof(Artista) * pos, SEEK_SET);
+    bool ok = fwrite(&registro, sizeof(Artista), 1, p);
+
+    fclose(p);
+    return ok;
+}

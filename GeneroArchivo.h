@@ -13,6 +13,7 @@ class GeneroArchivo
         int buscarId(int id);
         int getNuevoId();
         bool eliminarGenero(int idGenero);
+        bool modificar(int pos, Genero& registro);
 
     protected:
 

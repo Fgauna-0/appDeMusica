@@ -149,6 +149,10 @@ int main()
         ms.iniciar();
     }
 
+    /*if(sa.leerPorId(1,s)){
+        cout << s.getNombre() << " - " << s.getReproducciones() << endl;
+    }*/
+
 
     return 0;
 }

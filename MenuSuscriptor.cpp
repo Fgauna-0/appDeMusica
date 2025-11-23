@@ -124,6 +124,13 @@ void MenuSuscriptor::accionesSobreCancion(int idCancion) {
     if (aux == 1) {
         system("cls");
         _cm.reproducirCancion(idCancion);
+        SuscriptorArchivo sa;
+        int posSusActual = sa.buscarId(_suscriptorActual.getId());
+
+        _suscriptorActual.sumarReproduccion();
+
+        sa.modificar(posSusActual, _suscriptorActual);
+
         system("pause");
     }
     else if (aux == 2) {
