@@ -11,8 +11,8 @@ class SuscriptorManager
         bool iniciarSesion();
         void cerrarSesion();
         bool haySesion();
-        void modificarNombre();
-        void modificarSuscripcion();
+        bool modificarNombre(std::string nombre, Suscriptor& registro);
+        bool modificarSuscripcion(int suscripcion, Suscriptor& registro);
         Suscriptor getSuscriptorActual();
 
     private:

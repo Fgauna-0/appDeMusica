@@ -46,7 +46,7 @@ void MenuSuscriptor::menuPrincipal() {
                 break;
 
             case 2:
-                //menuModificarPerfil();
+                menuModificarPerfil();
                 break;
 
             case 3:
@@ -198,4 +198,103 @@ void MenuSuscriptor::buscarCancionesPorArtista(){
     cin.ignore();
 
     accionesSobreCancion(idCancion);
+}
+
+void MenuSuscriptor::menuModificarPerfil(){
+    int opcion;
+
+    system("cls");
+
+    cout << "=======================================" << endl;
+    cout << "#         MODIFICAR PERFIL             #" << endl;
+    cout << "=======================================" << endl;
+
+    cout << "1. Modificar nombre del perfil \n";
+    cout << "2. Modificar tipo de suscripcion \n";
+    cout << "0. Volver\n";
+    cout << "Opcion: ";
+    cin >> opcion;
+
+    cin.ignore();
+
+    switch(opcion){
+        case 1:
+        modificarNombre();
+        break;
+        case 2:
+        modificarSuscripcion();
+        break;
+        case 0:
+
+        break;
+        default:
+        cout << "Opcion incorrecta. \n";
+        system("pause");
+    }
+}
+
+void MenuSuscriptor::modificarNombre(){
+
+    string nombre;
+
+    system("cls");
+
+    cout << "=======================================" << endl;
+    cout << "#         MODIFICAR NOMBRE             #" << endl;
+    cout << "=======================================" << endl;
+
+    cout << "Ingrese el nuevo nombre: ";
+    getline(cin,nombre);
+    cin.ignore();
+
+    cout << endl;
+
+    if(_sm.modificarNombre(nombre,_suscriptorActual)){
+        cout << "Nombre modificado exitosamente!. \n";
+        system("pause");
+    }
+    else{
+        cout <<"Ha ocurrido un error al modificar el nombre. \n";
+        system("pause");
+    }
+}
+
+void MenuSuscriptor::modificarSuscripcion(){
+
+    int suscripcion;
+
+    system("cls");
+
+    cout << "=======================================" << endl;
+    cout << "#        MODIFICAR SUSCRIPCION         #" << endl;
+    cout << "=======================================" << endl;
+
+    cout << "Suscripcion actual: ";
+
+    if(_suscriptorActual.getTipoSuscripcion() == 1){
+        cout << "Gratuita - Limitada con publicidad \n";
+    }
+    else if(_suscriptorActual.getTipoSuscripcion() == 2){
+        cout << "Premium - Ilimitada sin publicidad \n";
+    }
+
+    cout << endl;
+
+    cout << "Elija la suscripcion: " <<endl;
+    cout << "1 - Gratuita (Limitada con publicidad) \n";
+    cout << "2 - Premium (Ilimitada sin publicidad) \n";
+    cout << "0 - Volver \n" << endl;
+    cout << "Opcion: ";
+    cin >> suscripcion;
+    cin.ignore();
+
+    if(suscripcion == 0) return;
+
+    if(suscripcion == _suscriptorActual.getTipoSuscripcion()){
+        cout << "Ya tiene esta suscripcion. \n";
+        system("pause");
+        return;
+    }
+
+    _sm.modificarSuscripcion(suscripcion, _suscriptorActual);
 }

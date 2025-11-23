@@ -25,6 +25,8 @@ class MenuSuscriptor
         void accionesSobreCancion(int idCancion);
         void buscarCancionesPorNombre();
         void buscarCancionesPorArtista();
+        void modificarNombre();
+        void modificarSuscripcion();
 
 };
 

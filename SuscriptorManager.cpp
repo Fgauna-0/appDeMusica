@@ -142,10 +142,24 @@ Suscriptor SuscriptorManager::getSuscriptorActual(){
     return _suscriptorActual;
 }
 
-void SuscriptorManager::modificarNombre(){
+bool SuscriptorManager::modificarNombre(std::string nombre, Suscriptor& registro){
+    int pos = _repo.buscarId(registro.getId());
+    registro.setNombre(nombre);
 
+    if(_repo.modificar(pos,registro)){
+        return true;
+    }
+
+    return false;
 }
 
-void SuscriptorManager::modificarSuscripcion(){
+bool SuscriptorManager::modificarSuscripcion(int suscripcion, Suscriptor& registro){
+    int pos = _repo.buscarId(registro.getId());
+    registro.setTipoSuscripcion(suscripcion);
 
+    if(_repo.modificar(pos,registro)){
+        return true;
+    }
+
+    return false;
 }

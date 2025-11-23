@@ -41,22 +41,8 @@
 1763932833 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\genero.h
 	<string>
 
-1763934137 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
+1763936518 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
 	<iostream>
-	"Cancion.h"
-	"Persona.h"
-	"Artista.h"
-	"Fecha.h"
-	"Suscriptor.h"
-	"SuscriptorArchivo.h"
-	"PlaylistManager.h"
-	"Genero.h"
-	"GeneroArchivo.h"
-	"GeneroManager.h"
-	"ArtistaManager.h"
-	"CancionManager.h"
-	"SuscriptorManager.h"
-	"FuncionesGlobales.h"
 	"MenuSuscriptor.h"
 
 1763932896 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptor.h
@@ -106,11 +92,11 @@
 	"SuscriptorArchivo.h"
 	<iostream>
 
-1763911483 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.cpp
+1763935397 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.cpp
 	<iostream>
 	"SuscriptorManager.h"
 
-1763870650 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.h
+1763935397 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.h
 	"SuscriptorArchivo.h"
 	"PlaylistManager.h"
 
@@ -139,7 +125,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1763934114 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionmanager.cpp
+1763934201 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionmanager.cpp
 	<iostream>
 	"CancionManager.h"
 
@@ -343,11 +329,11 @@
 1763853919 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\funcionesglobales.cpp
 	"FuncionesGlobales.h"
 
-1763933548 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menususcriptor.cpp
+1763936479 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menususcriptor.cpp
 	"MenuSuscriptor.h"
 	<iostream>
 
-1763927924 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menususcriptor.h
+1763935637 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menususcriptor.h
 	"SuscriptorManager.h"
 	"CancionManager.h"
 	"PlaylistManager.h"
