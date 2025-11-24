@@ -15,6 +15,7 @@ class CancionManager
         void mostrarCancionPorId(int id);
         bool mostrarCancionesPorNombre(string nombre);
         bool mostrarCancionesPorArtista(string nombre);
+        bool mostrarCancionesPorGenero(string nombre);
         int reproducirCancion(int idCancion, int idSuscriptor);
         void mostrarMasEscuchadaPorUsuario(int idUsuario);
         void mostrarTodasLasCanciones();

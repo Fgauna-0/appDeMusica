@@ -68,6 +68,7 @@ void MenuSuscriptor::menuBuscarCancion() {
         cout << "=======================================" << endl;
         cout << "1. Buscar por nombre\n";
         cout << "2. Buscar por artista\n";
+        cout << "3. Buscar por genero \n";
         cout << "0. Volver\n";
         cout << "Opcion: ";
         cin >> opcion;
@@ -75,13 +76,31 @@ void MenuSuscriptor::menuBuscarCancion() {
 
         cout << endl;
 
-        if (opcion == 1) {
+        /*if (opcion == 1) {
             buscarCancionesPorNombre();
         }
 
         else if (opcion == 2) {
             buscarCancionesPorArtista();
+        }*/
+        switch(opcion){
+        case 1:
+        buscarCancionesPorNombre();
+        break;
+        case 2:
+        buscarCancionesPorArtista();
+        break;
+        case 3:
+        buscarCancionesPorGenero();
+        break;
+        case 0:
+        return;
+        break;
+        default:
+            cout << "Opcion incorrecta. \n";
         }
+
+
 
     } while (opcion != 0);
 }
@@ -768,4 +787,38 @@ void MenuSuscriptor::eliminarPerfil(){
     return;
 }
 
+void MenuSuscriptor::buscarCancionesPorGenero(){
+
+    string genero;
+
+    system("cls");
+
+    cout << "==Buscar por genero==" << endl;
+
+    cout << endl;
+
+    cout << "Ingrese genero (0 para volver): ";
+    getline(cin, genero);
+
+    if(genero == "0") return;
+
+    system("cls");
+
+    cout << "==Canciones encontradas==" << endl << endl;
+
+    if(!_cm.mostrarCancionesPorArtista(genero)){
+        system("pause");
+        return;
+    }
+
+    int idCancion;
+    cout << endl;
+    cout << "ID de cancion para acciones (o 0 para volver): ";
+    cin >> idCancion;
+    cin.ignore();
+
+    accionesSobreCancion(idCancion);
+
+
+}
 

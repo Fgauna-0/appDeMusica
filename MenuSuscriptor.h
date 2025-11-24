@@ -39,6 +39,7 @@ class MenuSuscriptor
         void eliminarCancionDePlaylist();
         void reproducirPlaylist();
         void eliminarPerfil();
+        void buscarCancionesPorGenero();
 
 };
 

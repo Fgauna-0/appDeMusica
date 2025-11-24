@@ -291,4 +291,50 @@ void CancionManager::mostrarTodasLasCanciones(){
     }
 }
 
+bool CancionManager::mostrarCancionesPorGenero(string nombre){
 
+    FuncionesGlobales f;
+    string nombreGeneromin = f.aMinuscula(nombre);
+
+    Cancion c;
+    Genero g;
+
+    int totalArtistas = _repoArtista.getCantidadRegistros();
+    int idBuscado = -1;
+
+
+    for(int i = 0; i < totalArtistas; i++){
+        if(_repoGenero.leer(i, g)){
+            if(f.aMinuscula(g.getNombreGenero()) == nombreGeneromin && g.getEstado()){
+                idBuscado = g.getIdGenero();
+                break;
+            }
+        }
+    }
+
+    if(idBuscado == -1){
+        cout << "No existe un artista con ese nombre.\n";
+        return false;
+    }
+
+    int totalCanciones = _repo.getCantidadRegistros();
+    bool encontrado = false;
+
+    for (int i = 0; i < totalCanciones; i++) {
+        if (_repo.leer(i, c)) {
+            if (c.getIdGenero() == idBuscado && c.getEstado()) {
+
+                cout << "|ID: " << c.getIdCancion() << " |Cancion: " << c.getNombreCancion() << " |Genero: " << g.getNombreGenero() << endl;
+                encontrado = true;
+                return encontrado;
+            }
+        }
+    }
+
+    if(!encontrado){
+        cout << "El artista no tiene canciones cargadas.\n";
+        return encontrado;
+    }
+
+    return encontrado;
+}
