@@ -67,19 +67,6 @@ int CancionArchivo::getNuevoId(){
 
 }
 
-bool CancionArchivo::eliminarCancion(int idCancion){
-
-    Cancion c;
-    leer(buscarId(idCancion), c);
-
-    if(c.getEstado()){
-        c.setEstado(false);
-        return true;
-    }
-
-    return false;
-}
-
 int CancionArchivo::buscarPorNombre(std::string nombre){
 
     FuncionesGlobales f;

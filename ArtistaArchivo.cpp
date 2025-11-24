@@ -68,15 +68,6 @@ int ArtistaArchivo::getNuevoId(){
 
 }
 
-bool ArtistaArchivo::eliminarArtista(Artista &registro){
-    if(registro.getEstado()){
-        registro.setEstado(false);
-        return true;
-    }
-
-    return false;
-}
-
 int ArtistaArchivo::buscarPorNombre(std::string nombre){
 
     FuncionesGlobales f;

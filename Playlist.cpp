@@ -48,3 +48,6 @@ void Playlist::setEstado(bool estado){
     _estado = estado;
 }
 
+void Playlist::sumarReproduccion(){
+    _reproducciones++;
+}

@@ -69,6 +69,11 @@ void SuscriptorManager::registrarSuscriptor(){
     cout << "Opcion: ";
     cin >> tipoSuscripcion;
 
+    if(tipoSuscripcion != 1 && tipoSuscripcion != 2){
+        cout << "Opcion invalida" << endl;
+        return;
+    }
+
     cout << "Ingresar Contrasenia: ";
     cin.ignore();
     getline(cin,contrasenia);
@@ -104,12 +109,10 @@ bool SuscriptorManager::iniciarSesion(){
     string contrasenia;
     int total = _repo.getCantidadRegistros();
 
-    cout << "=======================================" << endl;
-    cout << "#      INICIAR SESSION - USUARIO       #" << endl;
-    cout << "=======================================" << endl;
-
     cout << "Ingresar DNI: ";
     getline(cin, dni);
+
+    cout << endl;
 
     cout << "Ingresar contrasenia: ";
     getline(cin, contrasenia);
@@ -117,14 +120,21 @@ bool SuscriptorManager::iniciarSesion(){
     for(int i = 0; i < total; i++){
         _repo.leer(i, s);
         if(s.getDni() == dni && s.getContrasenia() == contrasenia && s.getEstado()){
+            cout << endl;
             cout << "Inicio de session exitoso!!. " << "Bienvenido " << s.getNombre() << endl;
+            system("pause");
+            cout << endl;
             _suscriptorActual = s;
             _haySesion = true;
             return true;
         }
     }
 
+    cout << endl;
+
     cout << "DNI o contrasenia incorrecto. Vuelva a intentarlo." << endl;
+    system("pause");
+    cout << endl;
     return false;
 }
 
@@ -138,7 +148,7 @@ bool SuscriptorManager::haySesion(){
     return _haySesion;
 }
 
-Suscriptor SuscriptorManager::getSuscriptorActual(){
+Suscriptor& SuscriptorManager::getSuscriptorActual(){
     return _suscriptorActual;
 }
 
@@ -163,3 +173,28 @@ bool SuscriptorManager::modificarSuscripcion(int suscripcion, Suscriptor& regist
 
     return false;
 }
+
+void SuscriptorManager::sumarReproduccionAlSuscriptor()
+{
+    _suscriptorActual.sumarReproduccion();
+
+    int pos = _repo.buscarId(_suscriptorActual.getId());
+    if (pos != -1) {
+        _repo.modificar(pos, _suscriptorActual);
+    }
+}
+
+bool SuscriptorManager::eliminarCuenta(Suscriptor& registro){
+    int pos = _repo.buscarId(_suscriptorActual.getId());
+
+    _suscriptorActual.setEstado(false);
+
+    if(pos != -1){
+        if(_repo.modificar(pos, _suscriptorActual)){
+            return true;
+        }
+    }
+
+    return false;
+}
+

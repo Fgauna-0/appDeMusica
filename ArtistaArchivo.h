@@ -14,7 +14,6 @@ class ArtistaArchivo
         int getCantidadRegistros();
         int buscarId(int id);
         int getNuevoId();
-        bool eliminarArtista(Artista &registro);
         int buscarPorNombre(std::string nombre);
         int buscarPorDni(std::string dni);
         bool modificar(int pos, Artista& registro);

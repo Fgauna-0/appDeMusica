@@ -55,14 +55,14 @@ int PlaylistArchivo::getNuevoId(){
 
 }
 
-bool PlaylistArchivo::eliminarPlaylist(int idPlaylist){
-    Playlist p;
-    leer(buscarPorId(idPlaylist), p);
+bool PlaylistArchivo::modificar(int pos, Playlist& registro){
 
-    if(p.getEstado()){
-        p.setEstado(false);
-        return true;
-    }
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) return false;
 
-    return false;
+    fseek(p, sizeof(Playlist) * pos, SEEK_SET);
+    bool ok = fwrite(&registro, sizeof(Playlist), 1, p);
+
+    fclose(p);
+    return ok;
 }

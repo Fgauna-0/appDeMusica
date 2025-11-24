@@ -97,7 +97,7 @@ void CancionManager::mostrarCancionPorId(int id){
     }
 }
 
-void CancionManager::mostrarCancionesPorNombre(string nombre){
+bool CancionManager::mostrarCancionesPorNombre(string nombre){
 
     FuncionesGlobales f;
     string nombreMin = f.aMinuscula(nombre);
@@ -118,6 +118,7 @@ void CancionManager::mostrarCancionesPorNombre(string nombre){
                     cout << "|ID: " << c.getIdCancion() << " |Cancion: " << c.getNombreCancion() << " |Artista: " << a.getNombre() << endl;
 
                     encontrado = true;
+                    return encontrado;
                 }
             }
         }
@@ -125,10 +126,13 @@ void CancionManager::mostrarCancionesPorNombre(string nombre){
 
     if (!encontrado) {
         cout << "No se encontraron canciones con ese nombre.\n";
+        return encontrado;
     }
+
+    return encontrado;
 }
 
-void CancionManager::mostrarCancionesPorArtista(string nombre){
+bool CancionManager::mostrarCancionesPorArtista(string nombre){
 
     FuncionesGlobales f;
     string nombreArtistaMin = f.aMinuscula(nombre);
@@ -151,7 +155,7 @@ void CancionManager::mostrarCancionesPorArtista(string nombre){
 
     if(idBuscado == -1){
         cout << "No existe un artista con ese nombre.\n";
-        return;
+        return false;
     }
 
     int totalCanciones = _repo.getCantidadRegistros();
@@ -163,32 +167,52 @@ void CancionManager::mostrarCancionesPorArtista(string nombre){
 
                 cout << "|ID: " << c.getIdCancion() << " |Cancion: " << c.getNombreCancion() << " |Artista: " << a.getNombre() << endl;
                 encontrado = true;
+                return encontrado;
             }
         }
     }
 
     if(!encontrado){
         cout << "El artista no tiene canciones cargadas.\n";
+        return encontrado;
     }
+
+    return encontrado;
 }
 
-void CancionManager::reproducirCancion(int idCancion){
-
-    // 1) Buscar canción
+int CancionManager::reproducirCancion(int idCancion, int idUsuario)
+{
+    //Buscar canción
     int pos = _repo.buscarId(idCancion);
     if (pos == -1) {
         cout << "No existe una canción con ese ID.\n";
-        return;
+        return 0;
     }
 
     Cancion c;
     _repo.leer(pos, c);
 
-    // 2) Sumar reproducción a la canción
+    //Sumar reproduccion a la canción
     c.sumarReproduccion();
     _repo.modificar(pos, c);
 
-    // 3) Sumar reproducción al ARTISTA
+    //Sumar reproduccion a la tabla del usuario (canciones escuchadas)
+    int posRepro = _repoRepro.buscar(idUsuario, idCancion);
+    ReproduccionSuscriptor rs;
+
+    if (posRepro == -1) {
+        rs.setIdSuscriptor(idUsuario);
+        rs.setIdCancion(idCancion);
+        rs.sumarReproduccion();
+        _repoRepro.guardar(rs);
+    }
+    else {
+        _repoRepro.leer(posRepro, rs);
+        rs.sumarReproduccion();
+        _repoRepro.modificar(posRepro, rs);
+    }
+
+    //Sumar reproduccion al ARTISTA
     int posArt = _repoArtista.buscarId(c.getIdArtista());
     if (posArt != -1) {
         Artista a;
@@ -197,7 +221,7 @@ void CancionManager::reproducirCancion(int idCancion){
         _repoArtista.modificar(posArt, a);
     }
 
-    // 4) Sumar reproducción al GÉNERO
+    //Sumar reproduccion al GÉNERO
     int posGen = _repoGenero.buscarId(c.getIdGenero());
     if (posGen != -1) {
         Genero g;
@@ -206,7 +230,65 @@ void CancionManager::reproducirCancion(int idCancion){
         _repoGenero.modificar(posGen, g);
     }
 
-    cout << "==========================================" <<endl;
-    cout << "REPRODUCIENDO: " << c.getNombreCancion() << endl;
-    cout << "==========================================" <<endl;
+    cout << "-REPRODUCIENDO: " << c.getNombreCancion() << endl;
+
+    return 1; // cantidad de reproducciones que debe sumar el usuario
 }
+
+void CancionManager::mostrarMasEscuchadaPorUsuario(int idUsuario) {
+
+    ReproduccionSuscriptor rs;
+    int total = _repoRepro.getCantidadRegistros();
+
+    int maxRepro = -1;
+    int idCancionMax = -1;
+
+    for (int i = 0; i < total; i++) {
+        if (_repoRepro.leer(i, rs)) {
+            if (rs.getIdSuscriptor() == idUsuario &&
+                rs.getReproducciones() > maxRepro) {
+
+                maxRepro = rs.getReproducciones();
+                idCancionMax = rs.getIdCancion();
+            }
+        }
+    }
+
+    if (idCancionMax == -1) {
+        cout << "El usuario no escucho ninguna cancion.\n";
+        return;
+    }
+
+    int pos = _repo.buscarId(idCancionMax);
+    Cancion c;
+    _repo.leer(pos, c);
+
+    cout << "Cancion mas escuchada por este usuario:\n";
+    cout << c.getNombreCancion() << " (" << maxRepro << " reproducciones)" << endl;
+}
+
+void CancionManager::mostrarTodasLasCanciones(){
+
+    Cancion c;
+    Artista a;
+
+    int total = _repo.getCantidadRegistros();
+
+    for (int i = 0; i < total; i++) {
+        if (_repo.leer(i, c) && c.getEstado()) {
+
+            int posArt = _repoArtista.buscarId(c.getIdArtista());
+            string nombreArtista = "(Desconocido)";
+
+            if (posArt != -1 && _repoArtista.leer(posArt, a)) {
+                nombreArtista = a.getNombre();
+            }
+
+            cout << c.getIdCancion()
+                 << " - " << c.getNombreCancion()
+                 << " | " << nombreArtista << endl;
+        }
+    }
+}
+
+

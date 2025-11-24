@@ -66,18 +66,6 @@ int GeneroArchivo::getNuevoId(){
 
 }
 
-bool GeneroArchivo::eliminarGenero(int idGenero){
-    Genero g;
-    leer(buscarId(idGenero), g);
-
-    if(g.getEstado()){
-        g.setEstado(false);
-        return true;
-    }
-
-    return false;
-}
-
 bool GeneroArchivo::modificar(int pos, Genero& registro){
 
     FILE* p = fopen(_nombreArchivo.c_str(), "rb+");

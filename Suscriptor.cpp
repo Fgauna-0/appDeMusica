@@ -67,6 +67,17 @@ std::string Suscriptor::toCSV(){
 
 }
 
+std::string Suscriptor::tipoDeSuscripcionToCSV(){
+    if(_tipoSuscripcion == 1){
+        return "Gratuita - Limitada con publicidad";
+    }
+    else if(_tipoSuscripcion == 2){
+        return "Premium - Ilimiatada sin publicidad";
+    }
+
+    return "Sin suscripcion";
+}
+
 std::string Suscriptor::mostrarFechaDeNacimiento(){
     return _fechaNacimiento.toCSV();
 }

@@ -1,22 +1,14 @@
 #include <iostream>
-#include "MenuSuscriptor.h"
+#include "MenuPrincipal.h"
 
 using namespace std;
 
 int main()
 {
 
-    SuscriptorManager sm;
-    PlaylistManager pm;
-    CancionManager cm;
+    MenuPrincipal mp;
 
-    if(sm.iniciarSesion()){
-
-        pm.setSuscriptorActual(sm.getSuscriptorActual());
-
-        MenuSuscriptor ms(sm,cm,pm);
-        ms.iniciar();
-    }
+    mp.iniciar();
 
 
     return 0;

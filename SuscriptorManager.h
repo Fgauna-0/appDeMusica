@@ -13,7 +13,9 @@ class SuscriptorManager
         bool haySesion();
         bool modificarNombre(std::string nombre, Suscriptor& registro);
         bool modificarSuscripcion(int suscripcion, Suscriptor& registro);
-        Suscriptor getSuscriptorActual();
+        Suscriptor& getSuscriptorActual();
+        void sumarReproduccionAlSuscriptor();
+        bool eliminarCuenta(Suscriptor& registro);
 
     private:
 

@@ -11,6 +11,7 @@ class PlaylistCancionArchivo
         int getCantidadRegistros();
         bool existeRelacion(int idPlaylist, int idCancion);
         int buscarPorId(int idCancion, int idPlaylist);
+        bool modificar(int pos, PlaylistCancion& registro);
 
 
     private:

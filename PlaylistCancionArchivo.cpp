@@ -50,29 +50,47 @@ bool PlaylistCancionArchivo::existeRelacion(int idPlaylist, int idCancion){
     PlaylistCancion pc;
     int total = getCantidadRegistros();
 
-    for(int i = 0; i < total; i++){
+    for (int i = 0; i < total; i++) {
         leer(i, pc);
-        if(pc.getIdPlaylist() == idPlaylist && pc.getIdCancion() == idCancion){
-            return true;
+        if (pc.getEstado() &&
+            pc.getIdPlaylist() == idPlaylist &&
+            pc.getIdCancion() == idCancion) {
+                return true;
         }
     }
     return false;
 }
 
 int PlaylistCancionArchivo::buscarPorId(int idCancion, int idPlaylist){
+
     FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+    if (pFile == NULL) return -1;
 
-    if(pFile == NULL) return -1;
-    PlaylistCancion playlist;
+    PlaylistCancion pc;
+    int pos = 0;
 
-    int i = 0;
-    while(fread(&playlist, sizeof(PlaylistCancion), 1, pFile)){
-        if(playlist.getIdCancion() == idCancion && playlist.getIdPlaylist() == idPlaylist){
+    while (fread(&pc, sizeof(PlaylistCancion), 1, pFile)) {
+        if (pc.getIdCancion() == idCancion &&
+            pc.getIdPlaylist() == idPlaylist) {
+
             fclose(pFile);
-            return i;
+            return pos;
         }
-        i++;
+        pos++;
     }
+
     fclose(pFile);
     return -1;
+}
+
+bool PlaylistCancionArchivo::modificar(int pos, PlaylistCancion& registro){
+
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) return false;
+
+    fseek(p, sizeof(PlaylistCancion) * pos, SEEK_SET);
+    bool ok = fwrite(&registro, sizeof(PlaylistCancion), 1, p);
+
+    fclose(p);
+    return ok;
 }

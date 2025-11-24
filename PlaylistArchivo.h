@@ -11,8 +11,7 @@ class PlaylistArchivo
         int getCantidadRegistros();
         int buscarPorId(int id);
         int getNuevoId();
-        bool eliminarPlaylist(int idPlaylist);
-
+        bool modificar(int pos, Playlist& registro);
 
     private:
         std::string _nombreArchivo;

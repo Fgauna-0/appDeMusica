@@ -13,7 +13,6 @@ class CancionArchivo
         int getCantidadRegistros();
         int buscarId(int id);
         int getNuevoId();
-        bool eliminarCancion(int idCancion);
         int buscarPorNombre(std::string nombre);
         bool modificar(int pos, Cancion& registro);
 

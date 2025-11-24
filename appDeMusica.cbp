@@ -17,6 +17,7 @@
 					<Add directory="appDeMusica" />
 					<Add directory="../appDeMusica-fede" />
 					<Add directory="./" />
+					<Add directory="../appDeMusica-main fede" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -30,6 +31,7 @@
 					<Add directory="appDeMusica" />
 					<Add directory="../appDeMusica-fede" />
 					<Add directory="./" />
+					<Add directory="../appDeMusica-main fede" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -40,6 +42,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="AppMusica.cpp" />
+		<Unit filename="AppMusica.h" />
 		<Unit filename="Artista.cpp" />
 		<Unit filename="Artista.h" />
 		<Unit filename="ArtistaArchivo.cpp" />
@@ -62,6 +66,8 @@
 		<Unit filename="GeneroArchivo.h" />
 		<Unit filename="GeneroManager.cpp" />
 		<Unit filename="GeneroManager.h" />
+		<Unit filename="MenuPrincipal.cpp" />
+		<Unit filename="MenuPrincipal.h" />
 		<Unit filename="MenuSuscriptor.cpp" />
 		<Unit filename="MenuSuscriptor.h" />
 		<Unit filename="Persona.cpp" />
@@ -76,6 +82,10 @@
 		<Unit filename="PlaylistCancionArchivo.h" />
 		<Unit filename="PlaylistManager.cpp" />
 		<Unit filename="PlaylistManager.h" />
+		<Unit filename="ReproduccionSuscriptor.cpp" />
+		<Unit filename="ReproduccionSuscriptor.h" />
+		<Unit filename="ReproduccionSuscriptorArchivo.cpp" />
+		<Unit filename="ReproduccionSuscriptorArchivo.h" />
 		<Unit filename="Suscriptor.cpp" />
 		<Unit filename="Suscriptor.h" />
 		<Unit filename="SuscriptorArchivo.cpp" />

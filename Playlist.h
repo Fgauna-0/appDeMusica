@@ -22,6 +22,7 @@ class Playlist
         void setReproducciones(int reproducciones);
         void setNombrePlaylist(std::string nombre);
         void setEstado(bool estado);
+        void sumarReproduccion();
 
     protected:
 

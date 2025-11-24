@@ -1,7 +1,7 @@
 #pragma once
 #include "PlaylistArchivo.h"
 #include "PlaylistCancionArchivo.h"
-#include "CancionArchivo.h"
+#include "CancionManager.h"
 #include "SuscriptorManager.h"
 #include "ArtistaManager.h"
 
@@ -10,13 +10,15 @@ class PlaylistManager
 {
     public:
         PlaylistManager();
-        void crearPlaylist(int idSuscriptor);
-        void mostrarPlaylistDelSuscriptor(int idSuscriptor);
+        bool crearPlaylist(int idSuscriptor, string nombre);
+        bool mostrarPlaylistDelSuscriptor(int idSuscriptor);
         int getCantidadCancionesPlaylist(int idPlaylist);
         void mostrarCancionesDePlaylist(int idPlaylist);
         void agregarCancionAPlaylistPorIdPlaylist(int idPlaylist);
-        void agregarCancionAPlaylistPorIdPlaylistYIdCancion(int idPlaylist, int idCancion);
+        bool agregarCancionAPlaylistPorIdPlaylistYIdCancion(int idPlaylist, int idCancion);
         void setSuscriptorActual(const Suscriptor& s);
+        void eliminarPlaylist(int id);
+        bool eliminarCancionDePlaylist(int idPlaylist, int idCancion);
 
 
     protected:

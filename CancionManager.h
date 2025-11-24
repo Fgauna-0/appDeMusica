@@ -3,6 +3,8 @@
 #include "Cancion.h"
 #include "ArtistaManager.h"
 #include "GeneroManager.h"
+#include "ReproduccionSuscriptorArchivo.h"
+#include "SuscriptorManager.h"
 
 
 class CancionManager
@@ -11,9 +13,11 @@ class CancionManager
         CancionManager();
         void agregarCancion(int idArtista);
         void mostrarCancionPorId(int id);
-        void mostrarCancionesPorNombre(string nombre);
-        void mostrarCancionesPorArtista(string nombre);
-        void reproducirCancion(int idCancion);
+        bool mostrarCancionesPorNombre(string nombre);
+        bool mostrarCancionesPorArtista(string nombre);
+        int reproducirCancion(int idCancion, int idSuscriptor);
+        void mostrarMasEscuchadaPorUsuario(int idUsuario);
+        void mostrarTodasLasCanciones();
 
 
     private:
@@ -21,6 +25,8 @@ class CancionManager
         CancionArchivo _repo;
         ArtistaArchivo _repoArtista;
         GeneroArchivo _repoGenero;
+        ReproduccionSuscriptorArchivo _repoRepro;
+
 };
 
 
