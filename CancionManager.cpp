@@ -51,8 +51,8 @@ void CancionManager::agregarCancion(int idArtista){
     cout << endl << "Indique el genero" << endl << endl;
     g.listarGeneros();
 
-    cout << endl << "ID del genero: ";
-    cin >> idGenero;
+    cout << endl;
+    idGenero = fg.leerIntSeguro("ID Genero: ");
 
     c.setIdCancion(_repo.getNuevoId());
     c.setNombreCancion(nombre);
@@ -493,12 +493,11 @@ void CancionManager::listarPorNacionalidad(){
     for(auto &c : canciones) mostrar(c);
 }
 
-void CancionManager::consultarPorNombreGenero(string nombreGenero){
+bool CancionManager::consultarPorNombreGenero(string nombreGenero){
     auto canciones = cargarTodas();
 
     if (canciones.empty()) {
-        cout << "No hay canciones cargadas.\n";
-        return;
+        return false;
     }
 
     transform(nombreGenero.begin(), nombreGenero.end(), nombreGenero.begin(), ::tolower);
@@ -507,6 +506,8 @@ void CancionManager::consultarPorNombreGenero(string nombreGenero){
     int totalGeneros = repoGenero.getCantidadRegistros();
     map<int, string> mapGeneros;
     Genero g;
+
+    bool encontro = false;
 
     for (int i = 0; i < totalGeneros; i++) {
         repoGenero.leer(i, g);
@@ -521,21 +522,24 @@ void CancionManager::consultarPorNombreGenero(string nombreGenero){
 
         if (nombreGen.find(nombreGenero) != string::npos) {
             mostrar(c);
+            encontro = true;
         }
     }
+
+    return encontro;
 }
 
 
-void CancionManager::consultarPorNombreArtista(string nombreArtista){
+bool CancionManager::consultarPorNombreArtista(string nombreArtista){
     auto canciones = cargarTodas();
 
     if (canciones.empty()) {
-        cout << "No hay canciones cargadas.\n";
-        return;
+        return false;
     }
 
     transform(nombreArtista.begin(), nombreArtista.end(), nombreArtista.begin(), ::tolower);
 
+    bool encontro = false;
 
     ArtistaArchivo repoArtista;
     int totalArtistas = repoArtista.getCantidadRegistros();
@@ -557,30 +561,43 @@ void CancionManager::consultarPorNombreArtista(string nombreArtista){
 
         if (nombreArt.find(nombreArtista) != string::npos) {
             mostrar(c);
+            encontro = true;
         }
     }
+
+    return encontro;
 }
 
 
-void CancionManager::consultarPorAnio(int anio){
+bool CancionManager::consultarPorAnio(int anio){
     auto canciones = cargarTodas();
+
+    if (canciones.empty()) {
+        return false;
+    }
+
+    bool encontro = false;
 
     for (auto &c : canciones) {
         if (c.getFecha().getAnio() == anio) {
             mostrar(c);
+            encontro = true;
         }
     }
+
+    return encontro;
 }
 
-void CancionManager::consultarPorPais(string pais) {
+bool CancionManager::consultarPorPais(string pais) {
     auto canciones = cargarTodas();
 
     if (canciones.empty()) {
-        cout << "No hay canciones cargadas.\n";
-        return;
+        return false;
     }
 
     transform(pais.begin(), pais.end(), pais.begin(), ::tolower);
+
+    bool encontro = false;
 
     ArtistaArchivo repoArtista;
     Artista a;
@@ -593,9 +610,12 @@ void CancionManager::consultarPorPais(string pais) {
 
             if (nac.find(pais) != string::npos) {
                 mostrar(c);
+                encontro = true;
             }
         }
     }
+
+    return encontro;
 }
 
 
@@ -625,6 +645,8 @@ bool CancionManager::consultarPorTitulo(string titulo){
     }
 
     return encontro;
+
+
 }
 
 

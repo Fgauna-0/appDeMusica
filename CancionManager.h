@@ -34,10 +34,10 @@ class CancionManager
         void listarPorNacionalidad();
 
         // CONSULTAS
-        void consultarPorNombreGenero(string nombreGenero);
-        void consultarPorNombreArtista(string nombreArtista);
-        void consultarPorAnio(int anio);
-        void consultarPorPais(string pais);
+        bool consultarPorNombreGenero(string nombreGenero);
+        bool consultarPorNombreArtista(string nombreArtista);
+        bool consultarPorAnio(int anio);
+        bool consultarPorPais(string pais);
         bool consultarPorTitulo(string titulo);
 
     private:
@@ -46,6 +46,7 @@ class CancionManager
         ArtistaArchivo _repoArtista;
         GeneroArchivo _repoGenero;
         ReproduccionSuscriptorArchivo _repoRepro;
+        FuncionesGlobales fg;
 
 };
 

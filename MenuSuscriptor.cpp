@@ -26,14 +26,12 @@ void MenuSuscriptor::menuPrincipal() {
         cout << "=======================================" << endl;
         cout << "#            MENU USUARIO              #" << endl;
         cout << "=======================================" << endl;
-        cout << "-" << _sm.getSuscriptorActual().getNombre() << endl;
+        cout << "Usuario: " << _sm.getSuscriptorActual().getNombre() << endl;
         cout << "1. Buscar cancion\n";
         cout << "2. Perfil\n";
         cout << "3. Playlist\n";
         cout << "0. Cerrar sesion\n";
-        cout << "Seleccione una opcion: ";
-        cin >> opcion;
-        cin.ignore();
+        opcion = fg.leerIntSeguro("Seleccione una opcion: ");
 
         switch(opcion) {
 
@@ -69,20 +67,12 @@ void MenuSuscriptor::menuBuscarCancion() {
         cout << "1. Buscar por nombre\n";
         cout << "2. Buscar por artista\n";
         cout << "3. Buscar por genero \n";
+        cout << "4. Buscar por pais del artista \n";
         cout << "0. Volver\n";
-        cout << "Opcion: ";
-        cin >> opcion;
-        cin.ignore();
+        opcion = fg.leerIntSeguro("Opcion: ");
 
         cout << endl;
 
-        /*if (opcion == 1) {
-            buscarCancionesPorNombre();
-        }
-
-        else if (opcion == 2) {
-            buscarCancionesPorArtista();
-        }*/
         switch(opcion){
         case 1:
         buscarCancionesPorNombre();
@@ -92,6 +82,9 @@ void MenuSuscriptor::menuBuscarCancion() {
         break;
         case 3:
         buscarCancionesPorGenero();
+        break;
+        case 4:
+        buscarCancionesPorPaisDelArtista();
         break;
         case 0:
         return;
@@ -117,14 +110,13 @@ void MenuSuscriptor::accionesSobreCancion(int idCancion) {
     cout << "2. Agregar a playlist\n";
     cout << "0. Volver\n";
     int opcion;
-    cout << "Opcion: ";
-    cin >> opcion;
-    cin.ignore();
+    opcion = fg.leerIntSeguro("Opcion: ");
 
     if (opcion == 1) {
         system("cls");
 
         _cm.reproducirCancion(idCancion, _sm.getSuscriptorActual().getId());
+        _sm.sumarReproduccionAlSuscriptor();
 
         system("pause");
     }
@@ -132,9 +124,7 @@ void MenuSuscriptor::accionesSobreCancion(int idCancion) {
         system("cls");
         int idP;
         _pm.mostrarPlaylistDelSuscriptor(_sm.getSuscriptorActual().getId());
-        cout << "Opcion (ID playlist): ";
-        cin >> idP;
-        cin.ignore();
+        idP = fg.leerIntSeguro("Opcion (ID playlist): ");
         _pm.agregarCancionAPlaylistPorIdPlaylistYIdCancion(idP,idCancion);
             system("pause");
     }
@@ -169,9 +159,7 @@ void MenuSuscriptor::buscarCancionesPorNombre(){
 
     int idCancion;
     cout << endl;
-    cout << "ID de cancion para acciones (o 0 para volver): ";
-    cin >> idCancion;
-    cin.ignore();
+    idCancion = fg.leerIntSeguro("ID de canciones para acciones (o 0 para volver): ");
 
     accionesSobreCancion(idCancion);
 }
@@ -195,16 +183,14 @@ void MenuSuscriptor::buscarCancionesPorArtista(){
 
     cout << "==Canciones encontradas==" << endl << endl;
 
-    if(!_cm.mostrarCancionesPorArtista(nombre)){
+    if(!_cm.consultarPorNombreArtista(nombre)){
         system("pause");
         return;
     }
 
     int idCancion;
     cout << endl;
-    cout << "ID de cancion para acciones (o 0 para volver): ";
-    cin >> idCancion;
-    cin.ignore();
+    idCancion = fg.leerIntSeguro("ID de cancion para acciones (o 0 para volver): ");
 
     accionesSobreCancion(idCancion);
 }
@@ -228,10 +214,7 @@ void MenuSuscriptor::menuPerfil(){
     cout << "3.Eliminar perfil \n";
     cout << "0.Volver \n";
 
-    cout << "Opcion: ";
-    cin >> opcion;
-
-    cin.ignore();
+    opcion = fg.leerIntSeguro("Opcion: ");
 
     switch(opcion){
     case 1:
@@ -266,10 +249,7 @@ void MenuSuscriptor::menuModificarPerfil(){
     cout << "1. Modificar nombre del perfil \n";
     cout << "2. Modificar tipo de suscripcion \n";
     cout << "0. Volver\n";
-    cout << "Opcion: ";
-    cin >> opcion;
-
-    cin.ignore();
+    opcion = fg.leerIntSeguro("Opcion: ");
 
     switch(opcion){
         case 1:
@@ -301,9 +281,6 @@ void MenuSuscriptor::modificarNombre(){
     getline(cin,nombre);
 
     if(nombre == "0") return;
-    cin.ignore();
-
-
 
     cout << endl;
 
@@ -338,10 +315,7 @@ void MenuSuscriptor::modificarSuscripcion(){
     cout << "1 - Gratuita (Limitada con publicidad) \n";
     cout << "2 - Premium (Ilimitada sin publicidad) \n";
     cout << "0 - Volver \n" << endl;
-    cout << "Opcion: ";
-    cin >> suscripcion;
-
-    cin.ignore();
+    suscripcion = fg.leerIntSeguro("Opcion: ");
 
     if(suscripcion == 0) return;
 
@@ -379,10 +353,7 @@ void MenuSuscriptor::menuCrearPlaylist(){
     cout << "2.Crear Playlist" << endl;
     cout << "0.Volver" << endl;
 
-    cout << "Opcion: ";
-    cin >> opcion;
-
-    cin.ignore();
+    opcion = fg.leerIntSeguro("Opcion: ");
 
     switch(opcion){
     case 1:
@@ -488,10 +459,7 @@ void MenuSuscriptor::menuPlaylist(){
         cout << "6.Eliminar cancion de playlist \n";
         cout << "7.Reproducir playlist \n";
         cout << "0.Volver \n";
-        cout << "Opcion: ";
-        cin >> opcion;
-
-        cin.ignore();
+        opcion = fg.leerIntSeguro("Opcion: ");
 
         switch(opcion){
         case 1:
@@ -540,14 +508,11 @@ void MenuSuscriptor::verCancionesDePlaylist(){
 
     if(!verPlaylistsActuales()) return;
 
-    cout << "Ingrese el id de la playlist que quiera ver(0 para volver): \n";
-    cout << "Opcion: ";
-    cin >> idPlaylist;
+    cout << "Ingrese el id de la playlist que quiera ver(0 para volver)\n";
+    idPlaylist = fg.leerIntSeguro("Opcion: ");
 
 
     if(idPlaylist == 0) return;
-
-    cin.ignore();
 
     system("cls");
 
@@ -568,14 +533,10 @@ void MenuSuscriptor::eliminarPlaylist(){
 
     verPlaylistsActuales();
 
-    cout << "Ingrese el ID de la playlist a eliminar (0 para volver): ";
-    cin >> id;
+    cout << "Ingrese el ID de la playlist a eliminar (0 para volver)";
+    id = fg.leerIntSeguro("Opcion: ");
 
     if(id == 0) return;
-
-    cin.ignore();
-
-
 
     _pm.eliminarPlaylist(id);
 
@@ -595,9 +556,8 @@ void MenuSuscriptor::agregarCancionAPlaylist(){
     if(!_pm.mostrarPlaylistDelSuscriptor(_sm.getSuscriptorActual().getId())) return;
 
     int idPlaylist;
-    cout << "\nIngrese ID de playlist (0 para volver): ";
-    cin >> idPlaylist;
-    cin.ignore();
+    cout << "\nIngrese ID de playlist (0 para volver)";
+    idPlaylist = fg.leerIntSeguro("Opcion: ");
 
     if (idPlaylist == 0) return;
 
@@ -611,14 +571,10 @@ void MenuSuscriptor::agregarCancionAPlaylist(){
     _cm.mostrarTodasLasCanciones();
 
     int idCancion;
-    cout << "\nIngrese ID de cancion (0 para volver): ";
-    cin >> idCancion;
+    cout << "\nIngrese ID de cancion (0 para volver)";
+    idCancion = fg.leerIntSeguro("Opcion: ");
 
     if (idCancion == 0) return;
-
-    cin.ignore();
-
-
 
     //Agregar canción a playlist
     if (_pm.agregarCancionAPlaylistPorIdPlaylistYIdCancion(idPlaylist, idCancion)) {
@@ -643,8 +599,7 @@ void MenuSuscriptor::eliminarCancionDePlaylist(){
 
     int idPlaylist;
     cout << "\nIngrese ID de playlist (0 para volver): ";
-    cin >> idPlaylist;
-    cin.ignore();
+    idPlaylist = fg.leerIntSeguro("Opcion: ");
 
     if (idPlaylist == 0) return;
 
@@ -655,9 +610,7 @@ void MenuSuscriptor::eliminarCancionDePlaylist(){
 
     int idCancion;
     cout << "\nID de cancion a eliminar (0 para volver): ";
-    cin >> idCancion;
-    cin.ignore();
-
+    idCancion = fg.leerIntSeguro("Opcion: ");
     if (idCancion == 0) return;
 
     //Llamar al manager para eliminar la relacion
@@ -679,12 +632,10 @@ void MenuSuscriptor::reproducirPlaylist()
     cout << endl;
     cout << "Elija la playlist a reproducir (ID).\n";
     cout << "0 para volver.\n";
-    cout << "Opcion: ";
-    cin >> id;
+    id = fg.leerIntSeguro("Opcion: ");
 
     if (id == 0) return;
 
-    cin.ignore();
     system("cls");
 
     PlaylistArchivo repoPlaylist;
@@ -765,8 +716,7 @@ void MenuSuscriptor::eliminarPerfil(){
     cout << "1.Si \n";
     cout << "2.No \n";
 
-    cout << "Opcion: ";
-    cin >> opcion;
+    opcion = fg.leerIntSeguro("Opcion: ");
 
     cout << endl;
 
@@ -806,18 +756,50 @@ void MenuSuscriptor::buscarCancionesPorGenero(){
 
     cout << "==Canciones encontradas==" << endl << endl;
 
-    if(!_cm.mostrarCancionesPorArtista(genero)){
+    if(!_cm.consultarPorNombreGenero(genero)){
         system("pause");
         return;
     }
 
     int idCancion;
     cout << endl;
-    cout << "ID de cancion para acciones (o 0 para volver): ";
-    cin >> idCancion;
-    cin.ignore();
+    cout << "ID de cancion para acciones (o 0 para volver)";
+    idCancion = fg.leerIntSeguro("Opcion: ");
 
     accionesSobreCancion(idCancion);
 
+
+}
+
+void MenuSuscriptor::buscarCancionesPorPaisDelArtista(){
+
+    string pais;
+
+    system("cls");
+
+    cout << "==Buscar por pais del artista==" << endl;
+
+    cout << endl;
+
+    cout << "Ingrese pais (0 para volver): ";
+    getline(cin, pais);
+
+    if(pais == "0") return;
+
+    system("cls");
+
+    cout << "==Canciones encontradas==" << endl << endl;
+
+    if(!_cm.consultarPorPais(pais)){
+        system("pause");
+        return;
+    }
+
+    int idCancion;
+    cout << endl;
+    cout << "ID de cancion para acciones (o 0 para volver)";
+    idCancion = fg.leerIntSeguro("Opcion: ");
+
+    accionesSobreCancion(idCancion);
 
 }

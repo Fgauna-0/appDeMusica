@@ -36,7 +36,6 @@ bool PlaylistManager::mostrarPlaylistDelSuscriptor(int idSuscriptor){
             int cantidad = getCantidadCancionesPlaylist(p.getIdPlaylist());
             cout << "ID: " << p.getIdPlaylist() << "| Nombre: " << p.getNombrePlaylist() << " | Canciones: " << cantidad << endl;
             hay = true;
-            return hay;
         }
     }
 
@@ -48,7 +47,7 @@ bool PlaylistManager::mostrarPlaylistDelSuscriptor(int idSuscriptor){
 int PlaylistManager::getCantidadCancionesPlaylist(int idPlaylist){
 
     PlaylistCancion canciones;
-    int total = _repoPlaylist.getCantidadRegistros();
+    int total = _repoPlaylistCancion.getCantidadRegistros();
     int contador = 0;
 
     for(int i = 0; i < total; i++){
@@ -175,10 +174,8 @@ void PlaylistManager::agregarCancionAPlaylistPorIdPlaylist(int idPlaylist) {
 }
 
     int idCancion;
-    cout << "Ingresar ID de la cancion a agregar: ";
-    cin >> idCancion;
-
-    cin.ignore();
+    cout << "Ingresar ID de la cancion a agregar";
+    idCancion = fg.leerIntSeguro("Opcion: ");
 
     int posCancion = _repoCancion.buscarId(idCancion);
     if(posCancion == -1){
@@ -250,8 +247,6 @@ bool PlaylistManager::agregarCancionAPlaylistPorIdPlaylistYIdCancion(int idPlayl
     nueva.setIdPlaylist(idPlaylist);
     nueva.setIdCancion(idCancion);
     nueva.setEstado(true);
-
-    cout << "Cancion agregada!" << endl;
 
     return _repoPlaylistCancion.guardar(nueva);
 

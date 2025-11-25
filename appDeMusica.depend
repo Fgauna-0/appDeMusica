@@ -1,47 +1,49 @@
 # depslib dependency file v1.0
-1763977333 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artista.cpp
+1763977332 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artista.cpp
 	<cstring>
 	"Artista.h"
 
-1764024404 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artista.h
+1763977332 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artista.h
 	<string>
 	"Persona.h"
 
 1763977334 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\persona.h
 	<string>
 
-1763977333 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancion.cpp
+1764027416 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancion.cpp
 	<cstring>
 	"Cancion.h"
 
-1763977333 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancion.h
+1764027416 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancion.h
 	<string>
 	"Fecha.h"
 
-1763977333 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\fecha.h
+1763977332 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\fecha.h
 	<string>
 
-1763992454 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionarchivo.cpp
+1764027859 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionarchivo.cpp
 	"CancionArchivo.h"
+	<cstdio>
+	<cstring>
 
-1763992454 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionarchivo.h
+1764027859 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionarchivo.h
 	<string>
 	"Cancion.h"
 	"FuncionesGlobales.h"
 
-1763977333 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\fecha.cpp
+1763977332 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\fecha.cpp
 	<iostream>
 	<cstring>
 	"Fecha.h"
 
-1763977333 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\genero.cpp
+1763977332 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\genero.cpp
 	<cstring>
 	"Genero.h"
 
-1763977333 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\genero.h
+1763977332 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\genero.h
 	<string>
 
-1764027762 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
+1764006360 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\main.cpp
 	<iostream>
 	"MenuPrincipal.h"
 
@@ -50,7 +52,7 @@
 	"Persona.h"
 	"Fecha.h"
 
-1764028354 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptorarchivo.h
+1764032404 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptorarchivo.h
 	<string>
 	"Suscriptor.h"
 
@@ -58,17 +60,17 @@
 	<cstring>
 	"Persona.h"
 
-1763997365 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlist.cpp
+1763997364 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlist.cpp
 	"Playlist.h"
 	<cstring>
 
-1763997365 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlist.h
+1763997364 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlist.h
 	<string>
 
 1763992454 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistarchivo.cpp
 	"PlaylistArchivo.h"
 
-1763992455 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistarchivo.h
+1763992454 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistarchivo.h
 	<string>
 	"Playlist.h"
 
@@ -77,10 +79,10 @@
 
 1763977334 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancion.h
 
-1763996305 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancionarchivo.cpp
+1763996304 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancionarchivo.cpp
 	"PlaylistCancionArchivo.h"
 
-1763993115 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancionarchivo.h
+1763993114 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistcancionarchivo.h
 	<string>
 	"PlaylistCancion.h"
 
@@ -88,24 +90,24 @@
 	<cstring>
 	"Suscriptor.h"
 
-1764028332 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptorarchivo.cpp
+1764032404 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptorarchivo.cpp
 	"SuscriptorArchivo.h"
 	<iostream>
 
-1764028580 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.cpp
+1764037622 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.cpp
 	<iostream>
 	"SuscriptorManager.h"
 
-1764029633 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.h
+1764035092 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.h
 	"SuscriptorArchivo.h"
 	"PlaylistManager.h"
 	"FuncionesGlobales.h"
 
-1764028130 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistmanager.cpp
+1764038965 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistmanager.cpp
 	<iostream>
 	"PlaylistManager.h"
 
-1764010380 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistmanager.h
+1764035070 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\playlistmanager.h
 	"PlaylistArchivo.h"
 	"PlaylistCancionArchivo.h"
 	"CancionManager.h"
@@ -126,11 +128,11 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1764027723 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionmanager.cpp
+1764036393 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionmanager.cpp
 	<iostream>
 	"CancionManager.h"
 
-1764027538 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionmanager.h
+1764036020 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\cancionmanager.h
 	<vector>
 	<cstring>
 	<map>
@@ -147,7 +149,7 @@
 1763992454 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generoarchivo.h
 	"Genero.h"
 
-1763977333 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generomanager.cpp
+1763977332 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generomanager.cpp
 	<iostream>
 	"GeneroManager.h"
 
@@ -312,71 +314,84 @@
 	"Artista.h"
 	"ArtistaArchivo.h"
 
-1763992454 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artistaarchivo.cpp
+1764029673 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artistaarchivo.cpp
 	"ArtistaArchivo.h"
+	<cstdio>
+	<cstring>
 
-1763992455 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artistaarchivo.h
+1764029672 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artistaarchivo.h
 	<string>
 	"Artista.h"
 	"FuncionesGlobales.h"
 
-1763977333 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artistamanager.cpp
+1764029859 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artistamanager.cpp
 	<iostream>
 	"ArtistaManager.h"
 
-1763977333 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artistamanager.h
+1764039833 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\artistamanager.h
+	<string>
+	<vector>
 	"Artista.h"
 	"ArtistaArchivo.h"
 
-1764030133 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\funcionesglobales.h
+1764031945 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\funcionesglobales.h
 	<iostream>
 	<algorithm>
 	<string>
 	<limits>
 
-1764030246 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\funcionesglobales.cpp
+1764031945 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\funcionesglobales.cpp
 	"FuncionesGlobales.h"
 
-1764028517 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menususcriptor.cpp
+1764038468 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menususcriptor.cpp
 	"MenuSuscriptor.h"
 	<iostream>
 
-1764019414 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menususcriptor.h
+1764036279 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menususcriptor.h
 	"SuscriptorManager.h"
 	"CancionManager.h"
 	"PlaylistManager.h"
 
-1764005411 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\appmusica.cpp
+1764005410 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\appmusica.cpp
 	"AppMusica.h"
 
 1764005166 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\appmusica.h
 	"MenuPrincipal.h"
 
-1764029633 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuprincipal.h
+1764033235 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuprincipal.h
 	<iostream>
 	"MenuSuscriptor.h"
 	"ArtistaManager.h"
 	"GeneroManager.h"
+	"ArtistaManager.h"
 
-1763983709 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\reproduccionsuscriptorarchivo.h
+1763983708 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\reproduccionsuscriptorarchivo.h
 	<string>
 	"ReproduccionSuscriptor.h"
 
-1763983623 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\reproduccionsuscriptor.h
+1763983622 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\reproduccionsuscriptor.h
 
-1764019414 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuartista.cpp
+1764035318 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuartista.cpp
+	"ArtistaManager.h"
 	"MenuArtista.h"
+	<iostream>
+	<limits>
 
-1764019414 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuartista.h
+1764033904 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuartista.h
+	"Artista.h"
+	"ArtistaArchivo.h"
+	"ArtistaManager.h"
+	"CancionArchivo.h"
+
+1764035170 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuprincipal.cpp
+	"MenuPrincipal.h"
+	"MenuArtista.h"
 	"ArtistaManager.h"
 
-1764030226 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuprincipal.cpp
-	"MenuPrincipal.h"
-
-1763983623 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\reproduccionsuscriptor.cpp
+1763983622 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\reproduccionsuscriptor.cpp
 	"ReproduccionSuscriptor.h"
 
-1763983709 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\reproduccionsuscriptorarchivo.cpp
+1763983708 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\reproduccionsuscriptorarchivo.cpp
 	"ReproduccionSuscriptorArchivo.h"
 	<cstdio>
 

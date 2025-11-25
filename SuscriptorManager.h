@@ -22,6 +22,7 @@ class SuscriptorManager
 
         SuscriptorArchivo _repo;
         Suscriptor _suscriptorActual;
+        FuncionesGlobales fg;
         bool _haySesion;
 };
 

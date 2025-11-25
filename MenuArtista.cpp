@@ -18,8 +18,7 @@ void MenuArtista::iniciar() {
         cout << "1. Iniciar sesion\n";
         cout << "2. Registrarse\n";
         cout << "0. Volver\n";
-        cout << "Opcion: ";
-        cin >> opcion; cin.ignore();
+        opcion = fg.leerIntSeguro("Opcion: ");
 
         switch (opcion) {
             case 1:
@@ -39,6 +38,10 @@ void MenuArtista::iniciar() {
 
 void MenuArtista::iniciarSesion() {
     system("cls");
+
+    cout << "=======================================" << endl;
+    cout << "#           INICIAR SESION            #" << endl;
+    cout << "=======================================" << endl;
     string nombre, contra;
 
     cout << "Nombre: ";
@@ -80,8 +83,7 @@ void MenuArtista::menuPrincipal() {
         cout << "1. Menu del perfil\n";
         cout << "2. Menu de canciones\n";
         cout << "0. Cerrar sesion\n";
-        cout << "Opcion: ";
-        cin >> opcion; cin.ignore();
+        opcion = fg.leerIntSeguro("Opcion: ");
 
         switch (opcion) {
 
@@ -118,8 +120,7 @@ void MenuArtista::menuPerfil() {
         cout << "4. Cambiar contrasenia\n";
         cout << "5. Eliminar cuenta\n";
         cout << "0. Volver\n";
-        cout << "Opcion: ";
-        cin >> opcion; cin.ignore();
+        opcion = fg.leerIntSeguro("Opcion: ");
 
         switch (opcion) {
             case 1:
@@ -217,7 +218,7 @@ void MenuArtista::eliminarCuenta() {
     cout << "¿Seguro que quiere eliminar su cuenta?\n";
     cout << "1. Si\n2. No\nOpcion: ";
     int op;
-    cin >> op; cin.ignore();
+    op = fg.leerIntSeguro("Opcion: ");
 
     if (op == 1) {
         if (_am.eliminarCuenta())
@@ -241,9 +242,7 @@ void MenuArtista::menuCanciones() {
         cout << "2. Modificar cancion existente\n";
         cout << "3. Borrar cancion\n";
         cout << "0. Volver\n";
-        cout << "Opcion: ";
-        cin >> opcion;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        opcion = fg.leerIntSeguro("Opcion: ");
 
         switch(opcion) {
             case 1:
@@ -270,9 +269,7 @@ void MenuArtista::registrarCancion() {
     cout << "Nombre de la cancion: ";
     getline(cin, nombre);
 
-    cout << "Duracion (minutos): ";
-    cin >> duracion;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    duracion = fg.leerIntSeguro("Duracion (minutos): ");
 
     cout << "Genero: ";
     getline(cin, genero);
@@ -317,8 +314,7 @@ void MenuArtista::modificarCancion() {
     cout << "Nuevo nombre: ";
     getline(cin, nuevoNombre);
 
-    cout << "Nueva duracion (minutos): ";
-    cin >> duracion; cin.ignore();
+    duracion = fg.leerIntSeguro("Nueva duracion (minutos): ");
 
     cout << "Nuevo genero: ";
     getline(cin, genero);

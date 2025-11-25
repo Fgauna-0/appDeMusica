@@ -16,6 +16,7 @@ class MenuSuscriptor
         SuscriptorManager& _sm;
         CancionManager& _cm;
         PlaylistManager& _pm;
+        FuncionesGlobales fg;
 
 
         void menuPrincipal();
@@ -40,6 +41,7 @@ class MenuSuscriptor
         void reproducirPlaylist();
         void eliminarPerfil();
         void buscarCancionesPorGenero();
+        void buscarCancionesPorPaisDelArtista();
 
 };
 

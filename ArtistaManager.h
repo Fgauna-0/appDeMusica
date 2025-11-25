@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "Artista.h"
 #include "ArtistaArchivo.h"
 
@@ -23,6 +24,20 @@ class ArtistaManager
 
 
         bool eliminarCuenta();
+
+        /// CARGA
+        std::vector<Artista> cargarTodos();
+
+        // LISTADOS
+        void listarPorNombre();
+        void listarPorNacionalidad();
+        void listarPorCantidadCanciones();
+
+        // CONSULTAS
+        bool consultarPorPais(std::string pais);
+        bool consultarPorNombre(std::string nombreParcial);
+        bool consultarPorGeneroPredominante(int idGenero);
+
 
     private:
 

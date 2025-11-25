@@ -29,6 +29,7 @@ class PlaylistManager
         ArtistaArchivo _repoArtista;
         CancionArchivo _repoCancion;
         Suscriptor _suscriptorActual;
+        FuncionesGlobales fg;
 
 };
 

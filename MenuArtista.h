@@ -33,6 +33,7 @@ private:
 
     ArtistaManager &_am;
     CancionArchivo _ca{"canciones.dat"};
+    FuncionesGlobales fg;
 };
 
 

@@ -70,8 +70,9 @@ void SuscriptorManager::registrarSuscriptor(){
     cout << "1. Gratuita - Acceso limitado y publicidad." << endl;
     cout << "2. Premium - Acceso ilimitado y sin publicidad." << endl;
     cout << "==========================================" << endl;
-    cout << "Opcion: ";
-    cin >> tipoSuscripcion;
+    tipoSuscripcion = fg.leerIntSeguro("Opcion: ");
+
+    cout << endl;
 
     if(tipoSuscripcion != 1 && tipoSuscripcion != 2){
         cout << "Opcion invalida" << endl;
@@ -79,7 +80,6 @@ void SuscriptorManager::registrarSuscriptor(){
     }
 
     cout << "Ingresar Contrasenia: ";
-    cin.ignore();
     getline(cin,contrasenia);
 
     cout << endl;
@@ -95,6 +95,8 @@ void SuscriptorManager::registrarSuscriptor(){
     s.setFechaNacimiento(fecha);
     s.setReproducciones(0);
     s.setEstado(true);
+
+    cout << endl;
 
     if(_repo.guardar(s)){
         cout << "Registro completado exitosamente!" << endl;
