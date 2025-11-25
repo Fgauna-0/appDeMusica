@@ -251,6 +251,8 @@ bool PlaylistManager::agregarCancionAPlaylistPorIdPlaylistYIdCancion(int idPlayl
     nueva.setIdCancion(idCancion);
     nueva.setEstado(true);
 
+    cout << "Cancion agregada!" << endl;
+
     return _repoPlaylistCancion.guardar(nueva);
 
 }

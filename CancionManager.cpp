@@ -338,3 +338,294 @@ bool CancionManager::mostrarCancionesPorGenero(string nombre){
 
     return encontrado;
 }
+
+vector<Cancion> CancionManager::cargarTodas(){
+    vector<Cancion> v;
+    int total = _repo.getCantidadRegistros();
+    v.resize(total);
+
+    for(int i = 0; i < total; i++){
+        _repo.leer(i, v[i]);
+    }
+
+    return v;
+}
+
+void CancionManager::mostrar(const Cancion& c){
+
+    ArtistaArchivo repoArtista;
+    Artista art;
+    repoArtista.leerPorId(c.getIdArtista(),art);
+
+
+    GeneroArchivo repoGenero;
+    Genero gen;
+    repoGenero.leerPorId(c.getIdGenero(), gen);
+
+    cout << "ID: " << c.getIdCancion() << endl;
+    cout << "Titulo: " << c.getNombreCancion() << endl;
+    cout << "Fecha: " << c.getFecha().toCSV() << endl;
+    cout << "Genero: " << gen.getNombreGenero() << endl;
+    cout << "Artista: " << art.getNombre() << endl;
+    cout << "Pais del artista: " << art.getNacionalidad() << endl;
+    cout << "------------------------------\n";
+}
+
+
+void CancionManager::listarPorTitulo(){
+    FuncionesGlobales f;
+    auto v = cargarTodas();
+
+    sort(v.begin(), v.end(), [](Cancion a, Cancion b){
+
+    return a.getNombreCancion() < b.getNombreCancion();}
+
+    );
+    for(auto &c : v) mostrar(c);
+}
+
+void CancionManager::listarPorFecha(){
+    auto v = cargarTodas();
+
+    sort(v.begin(), v.end(), [](Cancion a, Cancion b){
+
+    Fecha fa = a.getFecha();
+    Fecha fb = b.getFecha();
+
+    if(fa.getAnio() != fb.getAnio())
+        return fa.getAnio() < fb.getAnio();
+
+    if(fa.getMes() != fb.getMes())
+        return fa.getMes() < fb.getMes();
+
+    return fa.getDia() < fb.getDia();
+});
+    for(auto &c : v) mostrar(c);
+}
+
+void CancionManager::listarPorGenero(){
+    auto canciones = cargarTodas();
+
+
+    GeneroArchivo repoGenero;
+    int totalGeneros = repoGenero.getCantidadRegistros();
+
+    map<int, string> mapGeneros;
+    Genero g;
+
+    for(int i = 0; i < totalGeneros; i++){
+        repoGenero.leer(i, g);
+        mapGeneros[g.getIdGenero()] = g.getNombreGenero();
+    }
+
+    // Ordenar por nombre del género
+    sort(canciones.begin(), canciones.end(),
+        [&](const Cancion& a, const Cancion& b){
+
+            string genA = mapGeneros[a.getIdGenero()];
+            string genB = mapGeneros[b.getIdGenero()];
+
+            return genA < genB;
+        }
+    );
+
+    // Mostrar
+    for(auto &c : canciones) mostrar(c);
+}
+
+void CancionManager::listarPorArtista(){
+    auto canciones = cargarTodas();
+
+
+    ArtistaArchivo repoArtista;
+    int totalArtistas = repoArtista.getCantidadRegistros();
+
+    map<int, string> mapArtistas;
+    Artista a;
+
+    for(int i = 0; i < totalArtistas; i++){
+        repoArtista.leer(i, a);
+        mapArtistas[a.getId()] = a.getNombre();
+    }
+
+    // Ordenar comparando el nombre del artista
+    sort(canciones.begin(), canciones.end(),
+        [&](const Cancion& c1, const Cancion& c2){
+
+            string art1 = mapArtistas[c1.getIdArtista()];
+            string art2 = mapArtistas[c2.getIdArtista()];
+
+            return art1 < art2;
+        }
+    );
+
+    // Mostrar
+    for(auto &c : canciones) mostrar(c);
+}
+
+void CancionManager::listarPorNacionalidad(){
+    auto canciones = cargarTodas();
+
+
+    ArtistaArchivo repoArtista;
+    int totalArtistas = repoArtista.getCantidadRegistros();
+
+    map<int, string> mapNacionalidad;
+    Artista a;
+
+    for(int i = 0; i < totalArtistas; i++){
+        repoArtista.leer(i, a);
+        mapNacionalidad[a.getId()] = a.getNacionalidad();
+    }
+
+    // Ordenar comparando la nacionalidad del artista
+    sort(canciones.begin(), canciones.end(),
+        [&](const Cancion& c1, const Cancion& c2){
+
+            string nac1 = mapNacionalidad[c1.getIdArtista()];
+            string nac2 = mapNacionalidad[c2.getIdArtista()];
+
+            return nac1 < nac2;
+        }
+    );
+
+    // Mostrar
+    for(auto &c : canciones) mostrar(c);
+}
+
+void CancionManager::consultarPorNombreGenero(string nombreGenero){
+    auto canciones = cargarTodas();
+
+    if (canciones.empty()) {
+        cout << "No hay canciones cargadas.\n";
+        return;
+    }
+
+    transform(nombreGenero.begin(), nombreGenero.end(), nombreGenero.begin(), ::tolower);
+
+    GeneroArchivo repoGenero;
+    int totalGeneros = repoGenero.getCantidadRegistros();
+    map<int, string> mapGeneros;
+    Genero g;
+
+    for (int i = 0; i < totalGeneros; i++) {
+        repoGenero.leer(i, g);
+        string nombre = g.getNombreGenero();
+        transform(nombre.begin(), nombre.end(), nombre.begin(), ::tolower);
+        mapGeneros[g.getIdGenero()] = nombre;
+    }
+
+
+    for (auto &c : canciones) {
+        string nombreGen = mapGeneros[c.getIdGenero()];
+
+        if (nombreGen.find(nombreGenero) != string::npos) {
+            mostrar(c);
+        }
+    }
+}
+
+
+void CancionManager::consultarPorNombreArtista(string nombreArtista){
+    auto canciones = cargarTodas();
+
+    if (canciones.empty()) {
+        cout << "No hay canciones cargadas.\n";
+        return;
+    }
+
+    transform(nombreArtista.begin(), nombreArtista.end(), nombreArtista.begin(), ::tolower);
+
+
+    ArtistaArchivo repoArtista;
+    int totalArtistas = repoArtista.getCantidadRegistros();
+    map<int, string> mapArtistas;
+    Artista a;
+
+    for (int i = 0; i < totalArtistas; i++) {
+        repoArtista.leer(i, a);
+
+        string nombre = a.getNombre();
+        transform(nombre.begin(), nombre.end(), nombre.begin(), ::tolower);
+
+        mapArtistas[a.getId()] = nombre;
+    }
+
+
+    for (auto &c : canciones) {
+        string nombreArt = mapArtistas[c.getIdArtista()];
+
+        if (nombreArt.find(nombreArtista) != string::npos) {
+            mostrar(c);
+        }
+    }
+}
+
+
+void CancionManager::consultarPorAnio(int anio){
+    auto canciones = cargarTodas();
+
+    for (auto &c : canciones) {
+        if (c.getFecha().getAnio() == anio) {
+            mostrar(c);
+        }
+    }
+}
+
+void CancionManager::consultarPorPais(string pais) {
+    auto canciones = cargarTodas();
+
+    if (canciones.empty()) {
+        cout << "No hay canciones cargadas.\n";
+        return;
+    }
+
+    transform(pais.begin(), pais.end(), pais.begin(), ::tolower);
+
+    ArtistaArchivo repoArtista;
+    Artista a;
+
+    for (auto &c : canciones) {
+        if (repoArtista.leerPorId(c.getIdArtista(), a)) {
+
+            string nac = a.getNacionalidad();
+            transform(nac.begin(), nac.end(), nac.begin(), ::tolower);
+
+            if (nac.find(pais) != string::npos) {
+                mostrar(c);
+            }
+        }
+    }
+}
+
+
+
+bool CancionManager::consultarPorTitulo(string titulo){
+    auto canciones = cargarTodas();
+
+    if (canciones.empty()) {
+        return false;
+    }
+
+    transform(titulo.begin(), titulo.end(), titulo.begin(), ::tolower);
+
+    bool encontro = false;
+
+    for (auto &c : canciones) {
+        string nombre = c.getNombreCancion();
+
+
+        transform(nombre.begin(), nombre.end(), nombre.begin(), ::tolower);
+
+        // Buscar coincidencia
+        if (nombre.find(titulo) != string::npos) {
+            mostrar(c);
+            encontro = true;
+        }
+    }
+
+    return encontro;
+}
+
+
+

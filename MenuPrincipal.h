@@ -3,6 +3,7 @@
 #include "MenuSuscriptor.h"
 #include "ArtistaManager.h"
 #include "GeneroManager.h"
+#include "ArtistaManager.h"
 
 
 
@@ -19,5 +20,6 @@ class MenuPrincipal
     PlaylistManager _pm;
     CancionManager _cm;
     GeneroManager _gm;
+    FuncionesGlobales fg;
 };
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "SuscriptorArchivo.h"
 #include "PlaylistManager.h"
+#include "FuncionesGlobales.h"
 
 
 class SuscriptorManager

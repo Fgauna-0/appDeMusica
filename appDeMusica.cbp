@@ -66,6 +66,8 @@
 		<Unit filename="GeneroArchivo.h" />
 		<Unit filename="GeneroManager.cpp" />
 		<Unit filename="GeneroManager.h" />
+		<Unit filename="MenuArtista.cpp" />
+		<Unit filename="MenuArtista.h" />
 		<Unit filename="MenuPrincipal.cpp" />
 		<Unit filename="MenuPrincipal.h" />
 		<Unit filename="MenuSuscriptor.cpp" />

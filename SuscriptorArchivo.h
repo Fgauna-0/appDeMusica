@@ -15,6 +15,7 @@ class SuscriptorArchivo
         int getNuevoId();
         int buscarPorDni(std::string dni);
         int buscarPorEmail(std::string email);
+        int buscarPorNombre(std::string nombre);
         bool modificar(int pos, Suscriptor& registro);
 
     private:

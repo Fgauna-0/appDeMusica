@@ -3,65 +3,62 @@
 
 using namespace std;
 
-ArtistaManager::ArtistaManager()
+ArtistaManager::ArtistaManager() :_repo("artistas.dat")
 {
-    //ctor
+    _haySesion = false;
 }
 
-void ArtistaManager::registrarArtista(){
-
+bool ArtistaManager::registrarArtista() {
     Artista a;
-    string nombre;
-    string dni;
-    string pais;
-    string contrasenia;
+    string nombre, dni, pais, contrasenia;
 
+    system("cls");
     cout << "=======================================" << endl;
     cout << "#         REGISTRAR ARTISTA           #" << endl;
     cout << "=======================================" << endl;
 
-    cout << "Ingresar DNI: ";
-    getline(cin, dni);
+    cout << "Nombre artistico: ";
+    getline(cin, nombre);
 
+    if (_repo.buscarPorNombre(nombre) != -1) {
+        cout << "Ya existe un artista con ese nombre.\n";
+        return false;
+    }
+
+    cout << "DNI: ";
+    getline(cin, dni);
     if (dni.size() < 7 || dni.size() > 9) {
-        cout << "DNI invalido. \n";
-        return;
+        cout << "DNI invalido.\n";
+        return false;
     }
 
     if (_repo.buscarPorDni(dni) != -1) {
         cout << "Ya existe un artista con ese DNI.\n";
-        return;
+        return false;
     }
 
-    cout << "Ingresar Nombre: ";
-    getline(cin, nombre);
-
-    if(_repo.buscarPorNombre(nombre) != -1){
-        cout << "Ya existe un artista con este nombre. \n";
-        return;
-    }
-
-    cout << "Ingresar Pais: ";
+    cout << "Nacionalidad: ";
     getline(cin, pais);
 
-    cout << "Ingresar Contrasenia: ";
+    cout << "Contrasenia: ";
     getline(cin, contrasenia);
 
     a.setId(_repo.getNuevoId());
-    a.setDni(dni);
     a.setNombre(nombre);
+    a.setDni(dni);
     a.setNacionalidad(pais);
     a.setContrasenia(contrasenia);
     a.setEstado(true);
     a.setReproducciones(0);
 
-    if(_repo.guardar(a)){
-        cout << "Artista registrado exitosamente!" << endl;
+    if (_repo.guardar(a)) {
+        cout << "\nArtista registrado exitosamente!\n";
+        return true;
     }
-    else{
-        cout << "Ha ocurrido un error" << endl;
+    else {
+        cout << "\nError al guardar el artista.\n";
+        return false;
     }
-
 }
 
 void ArtistaManager::mostrarArtistaPorId(int id){
@@ -82,42 +79,31 @@ void ArtistaManager::mostrarArtistaPorId(int id){
     }
 }
 
-bool ArtistaManager::iniciarSesion(){
-
+bool ArtistaManager::iniciarSesion(const std::string& nombre, const std::string& contrasenia) {
     Artista a;
-    string dni;
-    string contrasenia;
     int total = _repo.getCantidadRegistros();
 
-    cout << "=======================================" << endl;
-    cout << "#      INICIAR SESSION - ARTISTA       #" << endl;
-    cout << "=======================================" << endl;
+    for (int i = 0; i < total; i++) {
+        if (!_repo.leer(i, a)) continue;
 
-    cout << "Ingresar DNI: ";
-    getline(cin, dni);
-
-    cout << "Ingresar contrasenia: ";
-    getline(cin, contrasenia);
-
-    for(int i = 0; i < total; i++){
-        _repo.leer(i, a);
-        if(a.getDni() == dni && a.getContrasenia() == contrasenia && a.getEstado()){
-            cout << "Inicio de session exitoso!!. " << "Bienvenido " << a.getNombre() << endl;
+        if (a.getNombre() == nombre && a.getContrasenia() == contrasenia && a.getEstado()) {
+            cout << "Inicio de sesión exitoso!!. Bienvenido " << a.getNombre() << endl;
             _artistaActual = a;
             _haySesion = true;
             return true;
         }
     }
 
-    cout << "DNI o contrasenia incorrecto. Vuelva a intentarlo." << endl;
+    cout << "Nombre o contraseña incorrectos. Vuelva a intentarlo." << endl;
     return false;
 }
 
-Artista ArtistaManager::getArtistaActual(){
+
+Artista& ArtistaManager::getArtistaActual(){
     return _artistaActual;
 }
 
-bool ArtistaManager::getHaySesion(){
+bool ArtistaManager::haySesion(){
     return _haySesion;
 }
 
@@ -126,3 +112,52 @@ void ArtistaManager::cerrarSesion(){
     _artistaActual = Artista();
     cout << "Sesion cerrada" << endl;
 }
+
+bool ArtistaManager::modificarNombre(const std::string &nuevoNombre) {
+    if (_artistaActual.getId() == 0) return false;
+
+
+    if (_repo.buscarPorNombre(nuevoNombre) != -1) {
+        return false;
+    }
+
+    _artistaActual.setNombre(nuevoNombre);
+    int pos = _repo.buscarId(_artistaActual.getId());
+    if (pos == -1) return false;
+
+    return _repo.guardar(_artistaActual);
+}
+
+bool ArtistaManager::modificarNacionalidad(const std::string &nuevaNac) {
+    if (_artistaActual.getId() == 0) return false;
+
+    _artistaActual.setNacionalidad(nuevaNac);
+    int pos = _repo.buscarId(_artistaActual.getId());
+    if (pos == -1) return false;
+
+    return _repo.guardar(_artistaActual);
+}
+
+bool ArtistaManager::modificarContrasenia(const std::string &nuevaPass) {
+    if (_artistaActual.getId() == 0) return false;
+
+    _artistaActual.setContrasenia(nuevaPass);
+    int pos = _repo.buscarId(_artistaActual.getId());
+    if (pos == -1) return false;
+
+    return _repo.guardar(_artistaActual);
+}
+
+
+bool ArtistaManager::eliminarCuenta() {
+    if (_artistaActual.getId() == 0) return false;
+    int id = _artistaActual.getId();
+    bool ok = _repo.borrarPorId(id);
+    if (ok) {
+        _artistaActual = Artista();
+        _haySesion = false;
+    }
+    return ok;
+}
+
+

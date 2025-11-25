@@ -136,8 +136,7 @@ void MenuSuscriptor::accionesSobreCancion(int idCancion) {
         cin >> idP;
         cin.ignore();
         _pm.agregarCancionAPlaylistPorIdPlaylistYIdCancion(idP,idCancion);
-        cout << endl;
-        system("pause");
+            system("pause");
     }
 }
 
@@ -162,7 +161,8 @@ void MenuSuscriptor::buscarCancionesPorNombre(){
 
     cout << "==Canciones encontradas==" << endl << endl;
 
-    if(!_cm.mostrarCancionesPorNombre(nombre)){
+    if(!_cm.consultarPorTitulo(nombre)){
+        cout << "No se encontraron canciones" << endl;
         system("pause");
         return;
     }
@@ -313,7 +313,7 @@ void MenuSuscriptor::modificarNombre(){
         system("pause");
     }
     else{
-        cout <<"Ha ocurrido un error al modificar el nombre. \n";
+        cout <<"Nombre existente elija otro. \n";
         cout << endl;
         system("pause");
     }
@@ -737,7 +737,7 @@ void MenuSuscriptor::reproducirPlaylist()
         int incremento = _cm.reproducirCancion(c.getIdCancion(), idUser);
 
         for (int j = 0; j < incremento; j++) {
-            _sm.sumarReproduccionAlSuscriptor();    // ← CORRECTO
+            _sm.sumarReproduccionAlSuscriptor();
         }
     }
 
@@ -821,4 +821,3 @@ void MenuSuscriptor::buscarCancionesPorGenero(){
 
 
 }
-

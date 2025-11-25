@@ -124,6 +124,28 @@ int SuscriptorArchivo::buscarPorEmail(std::string email){
     return -1;
 }
 
+int SuscriptorArchivo::buscarPorNombre(std::string nombre){
+
+    FILE *pFile = fopen(_nombreArchivo.c_str(), "rb");
+
+    if(pFile == NULL){
+        return -1;
+    }
+    Suscriptor suscriptor;
+
+    int i = 0;
+
+    while(fread(&suscriptor, sizeof(Suscriptor), 1, pFile)){
+        if(suscriptor.getNombre() == nombre){
+            fclose(pFile);
+            return i;
+        }
+        i++;
+    }
+    fclose(pFile);
+    return -1;
+}
+
 bool SuscriptorArchivo::modificar(int pos, Suscriptor& registro){
 
     FILE* p = fopen(_nombreArchivo.c_str(), "rb+");

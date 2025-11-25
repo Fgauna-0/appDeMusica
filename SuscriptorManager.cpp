@@ -32,8 +32,12 @@ void SuscriptorManager::registrarSuscriptor(){
         return;
     }
 
-    cout << endl <<"Ingresar Nombre: ";
+    cout << endl <<"Ingresar Nombre de usuario: ";
     getline(cin, nombre);
+
+    if(_repo.buscarPorNombre(nombre) != -1){
+        cout << "Ya existe un usuario con ese nombre, elija otro.. \n";
+    }
 
     cout << endl << "Ingresar Apellido: ";
     getline(cin, apellido);
@@ -105,12 +109,12 @@ void SuscriptorManager::registrarSuscriptor(){
 bool SuscriptorManager::iniciarSesion(){
 
     Suscriptor s;
-    string dni;
+    string nombre;
     string contrasenia;
     int total = _repo.getCantidadRegistros();
 
-    cout << "Ingresar DNI: ";
-    getline(cin, dni);
+    cout << "Ingresar Nombre de usuario: ";
+    getline(cin, nombre);
 
     cout << endl;
 
@@ -119,7 +123,7 @@ bool SuscriptorManager::iniciarSesion(){
 
     for(int i = 0; i < total; i++){
         _repo.leer(i, s);
-        if(s.getDni() == dni && s.getContrasenia() == contrasenia && s.getEstado()){
+        if(s.getNombre() == nombre && s.getContrasenia() == contrasenia && s.getEstado()){
             cout << endl;
             cout << "Inicio de session exitoso!!. " << "Bienvenido " << s.getNombre() << endl;
             system("pause");
@@ -132,7 +136,7 @@ bool SuscriptorManager::iniciarSesion(){
 
     cout << endl;
 
-    cout << "DNI o contrasenia incorrecto. Vuelva a intentarlo." << endl;
+    cout << "Nombre o contrasenia incorrecto. Vuelva a intentarlo." << endl;
     system("pause");
     cout << endl;
     return false;
@@ -153,6 +157,11 @@ Suscriptor& SuscriptorManager::getSuscriptorActual(){
 }
 
 bool SuscriptorManager::modificarNombre(std::string nombre, Suscriptor& registro){
+
+    if(_repo.buscarPorNombre(nombre) != -1){
+        return false;
+    }
+
     int pos = _repo.buscarId(registro.getId());
     registro.setNombre(nombre);
 
@@ -197,4 +206,5 @@ bool SuscriptorManager::eliminarCuenta(Suscriptor& registro){
 
     return false;
 }
+
 

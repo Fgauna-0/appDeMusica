@@ -1,4 +1,7 @@
 #pragma once
+#include <vector>
+#include <cstring>
+#include <map>
 #include "CancionArchivo.h"
 #include "Cancion.h"
 #include "ArtistaManager.h"
@@ -20,6 +23,22 @@ class CancionManager
         void mostrarMasEscuchadaPorUsuario(int idUsuario);
         void mostrarTodasLasCanciones();
 
+        vector<Cancion> cargarTodas();
+        void mostrar(const Cancion& c);
+
+        // LISTADOS
+        void listarPorTitulo();
+        void listarPorFecha();
+        void listarPorGenero();
+        void listarPorArtista();
+        void listarPorNacionalidad();
+
+        // CONSULTAS
+        void consultarPorNombreGenero(string nombreGenero);
+        void consultarPorNombreArtista(string nombreArtista);
+        void consultarPorAnio(int anio);
+        void consultarPorPais(string pais);
+        bool consultarPorTitulo(string titulo);
 
     private:
 

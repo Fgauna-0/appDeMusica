@@ -1,15 +1,42 @@
-#pragma once
+#ifndef MENUARTISTA_H_INCLUDED
+#define MENUARTISTA_H_INCLUDED
+#include "Artista.h"
+#include "ArtistaArchivo.h"
 #include "ArtistaManager.h"
+#include "CancionArchivo.h"
 
+class MenuArtista {
 
-class MenuArtista
-{
-    public:
-        MenuArtista();
+public:
+    MenuArtista(ArtistaManager &am);
+    void iniciar();
 
-    protected:
+private:
 
-    private:
+    void menuPrincipal();
+    void menuPerfil();
+    void menuCanciones();
+
+    void verDatos();
+    void modificarNombre();
+    void modificarNacionalidad();
+    void modificarContrasenia();
+
+    void registrarCancion();
+    void modificarCancion();
+    void borrarCancion();
+
+    void eliminarCuenta();
+
+    void registrar();
+    void iniciarSesion();
+
+    ArtistaManager &_am;
+    CancionArchivo _ca{"canciones.dat"};
 };
 
 
+
+
+
+#endif // MENUARTISTA_H_INCLUDED
