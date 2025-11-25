@@ -8,9 +8,9 @@ class PlaylistCancion
 
 
         ///Getters
-        int getIdPlaylist();
-        int getIdCancion();
-        bool getEstado();
+        int getIdPlaylist()const ;
+        int getIdCancion()const ;
+        bool getEstado()const ;
 
         ///Setters
         void setIdPlaylist(int id);

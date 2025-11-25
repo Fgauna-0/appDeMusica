@@ -160,4 +160,111 @@ bool ArtistaManager::eliminarCuenta() {
     return ok;
 }
 
+vector<Artista> ArtistaManager::cargarTodos(){
+    vector<Artista> v;
+    int total = _repo.getCantidadRegistros();
+    v.resize(total);
+    for(int i=0;i<total;i++){
+        _repo.leer(i, v[i]);
+    }
+    return v;
+}
+
+// -------- LISTADOS --------
+
+void ArtistaManager::listarPorNombre(){
+    auto v = cargarTodos();
+
+    sort(v.begin(), v.end(), [](const Artista& a, const Artista& b){
+        return a.getNombre() < b.getNombre();
+    });
+
+    for(auto &a : v){
+        cout << a.toCSV() << endl;
+    }
+}
+
+void ArtistaManager::listarPorNacionalidad(){
+    auto v = cargarTodos();
+
+    sort(v.begin(), v.end(), [](const Artista& a, const Artista& b){
+        return a.getNacionalidad() < b.getNacionalidad();
+    });
+
+    for(auto &a : v){
+        cout << a.toCSV() << endl;
+    }
+}
+
+// helper interno: contar canciones de un artista
+static int contarCancionesDeArtista(int idArtista){
+    CancionArchivo repoCancion;
+    Cancion c;
+    int total = repoCancion.getCantidadRegistros();
+    int count = 0;
+
+    for(int i=0;i<total;i++){
+        repoCancion.leer(i, c);
+        if(c.getIdArtista() == idArtista && c.getEstado()){
+            count++;
+        }
+    }
+    return count;
+}
+
+void ArtistaManager::listarPorCantidadCanciones(){
+    auto v = cargarTodos();
+
+    sort(v.begin(), v.end(), [](const Artista& a, const Artista& b){
+        return contarCancionesDeArtista(a.getId()) > contarCancionesDeArtista(b.getId());
+    });
+
+    for(auto &a : v){
+        cout << a.getNombre()
+             << " | " << a.getNacionalidad()
+             << " | Canciones: " << contarCancionesDeArtista(a.getId())
+             << endl;
+    }
+}
+
+// -------- CONSULTAS --------
+
+bool ArtistaManager::consultarPorPais(string pais){
+    auto v = cargarTodos();
+    if(v.empty()) return false;
+
+    transform(pais.begin(), pais.end(), pais.begin(), ::tolower);
+    bool encontro = false;
+
+    for(auto &a : v){
+        string nac = a.getNacionalidad();
+        transform(nac.begin(), nac.end(), nac.begin(), ::tolower);
+
+        if(nac.find(pais) != string::npos){
+            cout << a.toCSV() << endl;
+            encontro = true;
+        }
+    }
+    return encontro;
+}
+
+bool ArtistaManager::consultarPorNombre(string nombreParcial){
+    auto v = cargarTodos();
+    if(v.empty()) return false;
+
+    transform(nombreParcial.begin(), nombreParcial.end(), nombreParcial.begin(), ::tolower);
+    bool encontro = false;
+
+    for(auto &a : v){
+        string nom = a.getNombre();
+        transform(nom.begin(), nom.end(), nom.begin(), ::tolower);
+
+        if(nom.find(nombreParcial) != string::npos){
+            cout << a.toCSV() << endl;
+            encontro = true;
+        }
+    }
+    return encontro;
+}
+
 

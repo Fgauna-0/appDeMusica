@@ -8,14 +8,56 @@ MenuSuscriptor::MenuSuscriptor(SuscriptorManager& sm, CancionManager& cm, Playli
 
 void MenuSuscriptor::iniciar() {
 
-    if(_sm.haySesion()) {
+    int opcion;
 
-        //sincronizar el suscriptor actual
-        _pm.setSuscriptorActual(_sm.getSuscriptorActual());
+    do {
+        system("cls");
+        cout << "=======================================\n";
+        cout << "           MENU SUSCRIPTOR\n";
+        cout << "=======================================\n";
+        cout << "1) Iniciar sesion\n";
+        cout << "2) Registrarse\n";
+        cout << "0) Volver\n";
+        opcion = fg.leerIntSeguro("Opcion: ");
 
-        menuPrincipal();
-    }
+        switch(opcion) {
+
+        case 1: {
+            system("cls");
+            cout << "=======================================" << endl;
+            cout << "#           INICIAR SESION            #" << endl;
+            cout << "=======================================" << endl;
+            if(_sm.iniciarSesion()) {
+                _pm.setSuscriptorActual(_sm.getSuscriptorActual());
+                menuPrincipal();
+            }
+            else {
+                cout << "Nombre o contrasenia incorrecta.\n";
+                system("pause");
+            }
+        }
+        break;
+
+        case 2: {
+            system("cls");
+            _sm.registrarSuscriptor();
+            system("pause");
+        }
+        break;
+
+        case 0:
+            return;
+        break;
+
+        default:
+            cout << "Opcion invalida.\n";
+            system("pause");
+            break;
+        }
+
+    } while(opcion != 0);
 }
+
 
 void MenuSuscriptor::menuPrincipal() {
     int opcion;
@@ -184,6 +226,7 @@ void MenuSuscriptor::buscarCancionesPorArtista(){
     cout << "==Canciones encontradas==" << endl << endl;
 
     if(!_cm.consultarPorNombreArtista(nombre)){
+        cout << "No se encontraron canciones" << endl;
         system("pause");
         return;
     }
@@ -757,6 +800,7 @@ void MenuSuscriptor::buscarCancionesPorGenero(){
     cout << "==Canciones encontradas==" << endl << endl;
 
     if(!_cm.consultarPorNombreGenero(genero)){
+        cout << "No se encontraron canciones" << endl;
         system("pause");
         return;
     }

@@ -16,15 +16,15 @@ Playlist::Playlist(int idPlaylist, int idSuscriptor, int reproducciones, std::st
 }
 
 ///Getters
-int Playlist::getIdPlaylist(){ return _idPlaylist;}
+int Playlist::getIdPlaylist()const { return _idPlaylist;}
 
-int Playlist::getIdSuscriptor(){ return _idSuscriptor;}
+int Playlist::getIdSuscriptor() const { return _idSuscriptor;}
 
-int Playlist::getReproducciones(){ return _reproducciones;}
+int Playlist::getReproducciones() const { return _reproducciones;}
 
-std::string Playlist::getNombrePlaylist(){return _nombrePlaylist;}
+std::string Playlist::getNombrePlaylist() const{return _nombrePlaylist;}
 
-bool Playlist::getEstado(){return _estado;}
+bool Playlist::getEstado()const {return _estado;}
 
 ///Setters
 void Playlist::setIdPlaylist(int id){

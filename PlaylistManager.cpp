@@ -333,3 +333,92 @@ bool PlaylistManager::eliminarCancionDePlaylist(int idPlaylist, int idCancion) {
     return _repoPlaylistCancion.modificar(posRel, pc);
 }
 
+vector<Playlist> PlaylistManager::cargarTodas(){
+    vector<Playlist> v;
+    int total = _repoPlaylist.getCantidadRegistros();
+    v.resize(total);
+    for(int i=0;i<total;i++){
+        _repoPlaylist.leer(i, v[i]);
+    }
+    return v;
+}
+
+// -------- LISTADOS --------
+
+void PlaylistManager::listarPorNombre(){
+    auto v = cargarTodas();
+
+    sort(v.begin(), v.end(), [](const Playlist& a, const Playlist& b){
+        return a.getNombrePlaylist() < b.getNombrePlaylist();
+    });
+
+    for(auto &pl : v){
+        cout << pl.getNombrePlaylist()
+             << " | Usuario: " << pl.getIdSuscriptor()
+             << " | Canciones: " << getCantidadCancionesPlaylist(pl.getIdPlaylist())
+             << endl;
+    }
+}
+
+void PlaylistManager::listarPorCantidadCanciones(){
+    auto v = cargarTodas();
+
+    sort(v.begin(), v.end(), [this](const Playlist& a, const Playlist& b){
+        return getCantidadCancionesPlaylist(a.getIdPlaylist()) >
+               getCantidadCancionesPlaylist(b.getIdPlaylist());
+    });
+
+    for(auto &pl : v){
+        cout << pl.getNombrePlaylist()
+             << " | Canciones: " << getCantidadCancionesPlaylist(pl.getIdPlaylist())
+             << " | Usuario: " << pl.getIdSuscriptor()
+             << endl;
+    }
+}
+
+void PlaylistManager::listarPorUsuario(){
+    auto v = cargarTodas();
+
+    sort(v.begin(), v.end(), [](const Playlist& a, const Playlist& b){
+        return a.getIdSuscriptor() < b.getIdSuscriptor();
+    });
+
+    for(auto &pl : v){
+        cout << pl.getNombrePlaylist()
+             << " | Usuario: " << pl.getIdSuscriptor()
+             << " | Canciones: " << getCantidadCancionesPlaylist(pl.getIdPlaylist())
+             << endl;
+    }
+}
+
+// -------- CONSULTAS --------
+
+bool PlaylistManager::consultarPorUsuario(int idSuscriptor){
+    auto v = cargarTodas();
+    if(v.empty()) return false;
+
+    bool encontro=false;
+    for(auto &pl : v){
+        if(pl.getEstado() && pl.getIdSuscriptor()==idSuscriptor){
+            cout << pl.getNombrePlaylist() << endl;
+            encontro=true;
+        }
+    }
+    return encontro;
+}
+
+bool PlaylistManager::consultarPorCantidadCanciones(int minCanciones){
+    auto v = cargarTodas();
+    if(v.empty()) return false;
+
+    bool encontro=false;
+    for(auto &pl : v){
+        int cant = getCantidadCancionesPlaylist(pl.getIdPlaylist());
+        if(pl.getEstado() && cant>=minCanciones){
+            cout << pl.getNombrePlaylist()
+                 << " | Canciones: " << cant << endl;
+            encontro=true;
+        }
+    }
+    return encontro;
+}

@@ -15,6 +15,7 @@ private:
     ArtistaManager &_am;
     SuscriptorManager &_sm;
     PlaylistManager &_pm;
+    FuncionesGlobales fg;
 
     void menuListados();
     void menuConsultas();
@@ -25,8 +26,8 @@ private:
     void listadoPlaylists();
 
     void consultaCanciones();
-    void consultaArtistas();
-    void consultaSuscriptores();
-    void consultaPlaylists();
+    void consultarArtistas();
+    void consultarSuscriptores();
+    void consultarPlaylists();
 };
 

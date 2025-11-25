@@ -13,9 +13,9 @@ PlaylistCancion::PlaylistCancion(int idPlaylist, int idCancion, bool estado){
 
 
 ///Getters
-int PlaylistCancion::getIdPlaylist(){ return _idPlaylist;}
-int PlaylistCancion::getIdCancion(){ return _idCancion;}
-bool PlaylistCancion::getEstado(){ return _estado;}
+int PlaylistCancion::getIdPlaylist()const { return _idPlaylist;}
+int PlaylistCancion::getIdCancion()const { return _idCancion;}
+bool PlaylistCancion::getEstado()const { return _estado;}
 
 ///Setters
 void PlaylistCancion::setIdPlaylist(int id){

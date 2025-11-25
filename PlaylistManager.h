@@ -20,6 +20,16 @@ class PlaylistManager
         void eliminarPlaylist(int id);
         bool eliminarCancionDePlaylist(int idPlaylist, int idCancion);
 
+        std::vector<Playlist> cargarTodas();
+
+        void listarPorNombre();
+        void listarPorCantidadCanciones();
+        void listarPorUsuario();
+
+        bool consultarPorUsuario(int idSuscriptor);
+        bool consultarPorCantidadCanciones(int minCanciones);
+
+
 
     protected:
 

@@ -18,6 +18,14 @@ class SuscriptorManager
         void sumarReproduccionAlSuscriptor();
         bool eliminarCuenta(Suscriptor& registro);
 
+        std::vector<Suscriptor> cargarTodos();
+
+        void listarPorApellido();
+        void listarPorTipoSuscripcion();
+
+        bool consultarPorTipoSuscripcion(int tipo);
+
+
     private:
 
         SuscriptorArchivo _repo;

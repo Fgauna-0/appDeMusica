@@ -10,11 +10,11 @@ class Playlist
         Playlist(int idPlaylist, int idSuscriptor, int reproducciones, std::string nombre, bool estado);
 
         ///Getters
-        int getIdPlaylist();
-        int getIdSuscriptor();
-        int getReproducciones();
-        std::string getNombrePlaylist();
-        bool getEstado();
+        int getIdPlaylist()const;
+        int getIdSuscriptor()const;
+        int getReproducciones()const;
+        std::string getNombrePlaylist() const;
+        bool getEstado()const;
 
         ///Setters
         void setIdPlaylist(int id);

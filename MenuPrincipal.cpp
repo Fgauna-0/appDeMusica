@@ -3,10 +3,9 @@
 #include "ArtistaManager.h"
 
 
-MenuPrincipal::MenuPrincipal()
-{
-    //ctor
-}
+MenuPrincipal::MenuPrincipal(SuscriptorManager& sm, ArtistaManager& am, CancionManager& cm, PlaylistManager& pm)
+: _sm(sm), _am(am), _cm(cm), _pm(pm)
+{}
 
 void MenuPrincipal::iniciar() {
 
@@ -26,38 +25,11 @@ void MenuPrincipal::iniciar() {
 
         switch(opcion) {
             case 1: {
-                int opcAux;
-
-                system("cls");
-                cout << "=======================================" << endl;
-                cout << "#              USUARIO                #" << endl;
-                cout << "=======================================" << endl;
-
-                cout << "1. Iniciar sesion \n";
-                cout << "2. Registrarse \n";
-                cout << "0. Volver \n";
-
-                opcAux = fg.leerIntSeguro("Opcion: ");
-
-                if(opcAux == 1){
-                    system("cls");
-                    cout << "=======================================" << endl;
-                    cout << "#           INICIAR SESION            #" << endl;
-                    cout << "=======================================" << endl;
-
-                    if(_sm.iniciarSesion()){
-                        MenuSuscriptor ms(_sm,_cm,_pm);
-                        ms.iniciar();
+                    MenuSuscriptor ms(_sm, _cm, _pm);
+                    ms.iniciar();
                     }
-                }
-                else if(opcAux == 2){
-                    system("cls");
-                    _sm.registrarSuscriptor();
-                    system("pause");
-                }
+                    break;
 
-                break;
-            }
 
             case 2: {
                 system("cls");
@@ -71,7 +43,8 @@ void MenuPrincipal::iniciar() {
                 } break;
 
             case 3: {
-                // menu admin
+                MenuAdministrador mad(_cm, _am, _sm, _pm);
+                mad.iniciar();
             } break;
 
             case 0:
@@ -81,7 +54,9 @@ void MenuPrincipal::iniciar() {
             default:
                 cout << "Opcion invalida." << endl;
                 system("pause");
-        }
+            }
 
-    } while (opcion != 0);
+        }while (opcion != 0);
 }
+
+

@@ -1,15 +1,13 @@
 #include <iostream>
-#include "MenuPrincipal.h"
+#include "AppMusica.h"
 
 using namespace std;
 
 int main()
 {
+    AppMusica am;
 
-    MenuPrincipal mp;
-
-    mp.iniciar();
-
+    am.iniciar();
 
     return 0;
 }

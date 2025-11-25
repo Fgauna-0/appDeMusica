@@ -3,6 +3,7 @@
 #include <vector>
 #include "Artista.h"
 #include "ArtistaArchivo.h"
+#include "CancionArchivo.h"
 
 
 class ArtistaManager
@@ -36,7 +37,6 @@ class ArtistaManager
         // CONSULTAS
         bool consultarPorPais(std::string pais);
         bool consultarPorNombre(std::string nombreParcial);
-        bool consultarPorGeneroPredominante(int idGenero);
 
 
     private:

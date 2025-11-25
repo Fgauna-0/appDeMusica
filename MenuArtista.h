@@ -4,6 +4,7 @@
 #include "ArtistaArchivo.h"
 #include "ArtistaManager.h"
 #include "CancionArchivo.h"
+#include "GeneroManager.h"
 
 class MenuArtista {
 

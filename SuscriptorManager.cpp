@@ -54,7 +54,7 @@ void SuscriptorManager::registrarSuscriptor(){
     getline(cin, telefono);
 
     if (telefono.size() != 10) {
-        cout << "DNI invalido. \n";
+        cout << "Telefono invalido. \n";
         return;
     }
 
@@ -138,7 +138,6 @@ bool SuscriptorManager::iniciarSesion(){
 
     cout << endl;
 
-    cout << "Nombre o contrasenia incorrecto. Vuelva a intentarlo." << endl;
     system("pause");
     cout << endl;
     return false;
@@ -207,6 +206,58 @@ bool SuscriptorManager::eliminarCuenta(Suscriptor& registro){
     }
 
     return false;
+}
+
+vector<Suscriptor> SuscriptorManager::cargarTodos(){
+    vector<Suscriptor> v;
+    int total = _repo.getCantidadRegistros();
+    v.resize(total);
+    for(int i=0;i<total;i++){
+        _repo.leer(i, v[i]);
+    }
+    return v;
+}
+
+// -------- LISTADOS --------
+
+void SuscriptorManager::listarPorApellido(){
+    auto v = cargarTodos();
+
+    sort(v.begin(), v.end(), [](const Suscriptor& a, const Suscriptor& b){
+        return a.getApellido() < b.getApellido();
+    });
+
+    for(auto &s : v){
+        cout << s.toCSV() << endl;
+    }
+}
+
+void SuscriptorManager::listarPorTipoSuscripcion(){
+    auto v = cargarTodos();
+
+    sort(v.begin(), v.end(), [](const Suscriptor& a, const Suscriptor& b){
+        return a.getTipoSuscripcion() < b.getTipoSuscripcion();
+    });
+
+    for(auto &s : v){
+        cout << s.toCSV() << endl;
+    }
+}
+
+// -------- CONSULTAS --------
+
+bool SuscriptorManager::consultarPorTipoSuscripcion(int tipo){
+    auto v = cargarTodos();
+    if(v.empty()) return false;
+
+    bool encontro=false;
+    for(auto &s : v){
+        if(s.getTipoSuscripcion()==tipo){
+            cout << s.toCSV() << endl;
+            encontro=true;
+        }
+    }
+    return encontro;
 }
 
 

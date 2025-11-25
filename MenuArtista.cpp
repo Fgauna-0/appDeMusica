@@ -263,7 +263,9 @@ void MenuArtista::menuCanciones() {
 
 void MenuArtista::registrarCancion() {
     system("cls");
-    string nombre, genero;
+    GeneroManager gm;
+    string nombre;
+    int idGenero;
     float duracion;
 
     cout << "Nombre de la cancion: ";
@@ -271,8 +273,14 @@ void MenuArtista::registrarCancion() {
 
     duracion = fg.leerIntSeguro("Duracion (minutos): ");
 
-    cout << "Genero: ";
-    getline(cin, genero);
+    cout << "==Generos disponibles==";
+
+    gm.listarGeneros();
+
+    cout << "Indique el genero (ID)" << endl;
+    idGenero = fg.leerIntSeguro("Opcion: ");
+
+
 
     Cancion c;
     c.setIdCancion(_ca.getNuevoId());
@@ -282,7 +290,7 @@ void MenuArtista::registrarCancion() {
     c.setFecha(hoy);
     c.setEstado(true);
     c.setDuracion(duracion);
-    c.setGenero(genero);
+    c.setIdGenero(idGenero);
 
     if (_ca.guardar(c))
         cout << "\nCancion registrada con exito.\n";
