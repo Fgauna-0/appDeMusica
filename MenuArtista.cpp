@@ -273,8 +273,6 @@ void MenuArtista::registrarCancion() {
 
     duracion = fg.leerIntSeguro("Duracion (minutos): ");
 
-    cout << "==Generos disponibles==";
-
     gm.listarGeneros();
 
     cout << "Indique el genero (ID)" << endl;

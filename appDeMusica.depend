@@ -100,9 +100,10 @@
 	"Artista.h"
 	"FuncionesGlobales.h"
 
-1763977334 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generomanager.h
+1764048048 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generomanager.h
 	"Genero.h"
 	"GeneroArchivo.h"
+	"FuncionesGlobales.h"
 
 1763977332 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\genero.h
 	<string>
@@ -116,7 +117,7 @@
 
 1763983622 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\reproduccionsuscriptor.h
 
-1764041730 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuadministrador.h
+1764047915 c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuadministrador.h
 	"CancionManager.h"
 	"ArtistaManager.h"
 	"SuscriptorManager.h"
@@ -163,7 +164,7 @@
 1763992454 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generoarchivo.cpp
 	"GeneroArchivo.h"
 
-1763977332 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generomanager.cpp
+1764048031 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\generomanager.cpp
 	<iostream>
 	"GeneroManager.h"
 
@@ -171,11 +172,11 @@
 	<iostream>
 	"AppMusica.h"
 
-1764047020 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuadministrador.cpp
+1764048089 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuadministrador.cpp
 	<iostream>
 	"MenuAdministrador.h"
 
-1764046657 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuartista.cpp
+1764048170 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menuartista.cpp
 	"ArtistaManager.h"
 	"MenuArtista.h"
 	<iostream>
@@ -192,6 +193,10 @@
 	"MenuPrincipal.h"
 	"MenuArtista.h"
 	"ArtistaManager.h"
+
+1764046068 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menususcriptor.cpp
+	"MenuSuscriptor.h"
+	<iostream>
 
 1763977334 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\persona.cpp
 	<cstring>
@@ -232,8 +237,4 @@
 1764045346 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\suscriptormanager.cpp
 	<iostream>
 	"SuscriptorManager.h"
-
-1764046068 source:c:\users\usuario\onedrive\escritorio\programacion\pruebas\appdemusica\menususcriptor.cpp
-	"MenuSuscriptor.h"
-	<iostream>
 

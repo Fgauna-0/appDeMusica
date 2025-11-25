@@ -21,6 +21,11 @@ void GeneroManager::agregarGenero(){
 
     cout << endl;
 
+    if(verificarGeneroExistente(nombre)){
+        cout << "Ya existe el genero" << endl;
+        return;
+    }
+
     g.setIdGenero(_repo.getNuevoId());
     g.setReproduccionesGenero(0);
     g.setEstado(true);
@@ -71,5 +76,23 @@ void GeneroManager::listarGeneros(){
 
     }
 
+}
+
+bool GeneroManager::verificarGeneroExistente(std::string nombre){
+    FuncionesGlobales fg;
+    Genero g;
+    int total = _repo.getCantidadRegistros();
+
+    bool encontro = false;
+
+    for(int i = 0; i < total; i++){
+        if(_repo.leer(i,g)){
+            if(fg.aMinuscula(g.getNombreGenero()) == fg.aMinuscula(nombre)){
+                encontro = true;
+            }
+        }
+    }
+
+    return encontro;
 }
 

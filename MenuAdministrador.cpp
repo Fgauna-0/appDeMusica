@@ -16,12 +16,14 @@ void MenuAdministrador::iniciar() {
         cout << "=======================================" << endl;
         cout << "1) Listados\n";
         cout << "2) Consultas\n";
+        cout << "3) Agregar Genero \n";
         cout << "0) Volver\n";
         op = fg.leerIntSeguro("Opcion: ");
 
         switch (op) {
         case 1: menuListados(); break;
         case 2: menuConsultas(); break;
+        case 3: agregarGenero(); break;
         }
     } while (op != 0);
 }
@@ -332,4 +334,10 @@ void MenuAdministrador::consultarPlaylists() {
     while(op != 0);
 }
 
+void MenuAdministrador::agregarGenero(){
+    system("cls");
+    GeneroManager gm;
+    gm.agregarGenero();
+    system("pause");
+}
 

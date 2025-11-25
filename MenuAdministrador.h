@@ -29,5 +29,7 @@ private:
     void consultarArtistas();
     void consultarSuscriptores();
     void consultarPlaylists();
+
+    void agregarGenero();
 };
 
